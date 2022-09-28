@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
 
     node.vm.provider "libvirt" do |lv|
       lv.memory = "8192"
-      lv.cpus = "6"
+      lv.cpus = "4"
     end
   
     node.vm.provision "shell", inline: <<-SHELL
@@ -23,4 +23,26 @@ Vagrant.configure("2") do |config|
     SHELL
 
   end
+
+  config.vm.define "vm02" do |node|
+    node.vm.box = "opensuse/Leap-15.3.x86_64"
+    node.vm.hostname = "vm02"
+
+    node.vm.provider "libvirt" do |lv|
+      lv.memory = "8192"
+      lv.cpus = "4"
+    end
+  
+    node.vm.provision "shell", inline: <<-SHELL
+    sudo zypper in -y docker git
+
+    sudo systemctl enable docker
+    sudo systemctl start docker
+
+    sudo usermod -aG docker vagrant
+    newgrp docker
+    SHELL
+
+  end
+
 end
