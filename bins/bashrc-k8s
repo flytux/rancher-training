@@ -1,0 +1,7 @@
+source <(kubectl completion bash)
+
+alias k=kubectl
+alias vi=vim
+alias kn='kubectl config set-context --current --namespace'
+alias kc='kubectl config use-context'
+alias di='docker images --format "table {{.Repository}}:{{.Tag}}\t{{.ID}}\t{{.Size}}\t{{.CreatedSince}}"'

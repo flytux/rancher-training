@@ -1,1 +1,1 @@
-# rancher-training
+Rancher Training Labs
