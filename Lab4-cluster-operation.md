@@ -1,12 +1,12 @@
 Lab4. Cluster Operation
 
-**1) Cluster Backup
+**1) Cluster Backup**
 
 - RKE > Tools > snapshots > Snapshot Now
 - Deploy nginx 
 - Restore snapshot
 
-**2) Application Logging
+**2) Application Logging**
 
 - Create Project "Observability"
 
@@ -19,7 +19,7 @@ Lab4. Cluster Operation
 - Connect kibana
 - Create index pattern > rke*
 
-**3) Enable monitoring
+**3) Enable monitoring**
 
 - Tools > Monitoring > Enable
 
