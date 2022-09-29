@@ -2,10 +2,10 @@
 
 **0. Pre-work**
 
-- Add /etc/hosts on vm01/vm02
+- Add /etc/hosts on vm01, vm02
 ~~~
-%PRIVATE_IP_VM1% vm01 
-%PRIVATE_IP_VM2% vm02
+172.100.100.101 vm01 
+172.100.100.201 vm02
 ~~~
 
 - Clone workshop repo 
