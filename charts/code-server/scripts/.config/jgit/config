@@ -1,0 +1,3 @@
+[filesystem "AdoptOpenJDK|11.0.11|/dev/nvme0n1p1"]
+	timestampResolution = 4000 nanoseconds
+	minRacyThreshold = 5125 microseconds
