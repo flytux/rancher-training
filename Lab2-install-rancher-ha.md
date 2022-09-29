@@ -1,4 +1,4 @@
-### Lab2. Install Rancher in cluster HA
+### Lab 2. Install Rancher in cluster HA
 
 **1) Check cluster**
 
