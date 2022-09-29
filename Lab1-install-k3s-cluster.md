@@ -1,46 +1,67 @@
-Lab 1: Install K3S Cluster
+### Lab 1: Install K3S Cluster
 
-0. Pre-work
+**0. Pre-work**
 
-- add /etc/hosts on vm01/vm02
-%IP% vm01 
-%IP$ vm02
+- Add /etc/hosts on vm01/vm02
+~~~
+%PRIVATE_IP_VM1% vm01 
+%PRIVATE_IP_VM2% vm02
+~~~
 
-## Login vm01
-- git clone https://github.com/flytux/rancher-training
+- Clone workshop repo 
+- Login vm01
 
-- cd rancher-training
-- sudo cp bins/* /usr/local/bin
+~~~
+$ git clone https://github.com/flytux/rancher-training
 
-- cat config/bashrc-k8s >> ~/.bashrc
-- source ~/.bashrc
+$ cd rancher-training
+$ sudo cp bins/* /usr/local/bin
 
-1. Install k3s 
+$ cat config/bashrc-k8s >> ~/.bashrc
+$ source ~/.bashrc
+~~~
 
-- curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.21.10+k3s1 sh -s - --docker --write-kubeconfig-mode 644
+**1. Install k3s**
 
-- mkdir ~/.kube
-- sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config && sudo chown vagrant:vagrant ~/.kube/config
-- export KUBECONFIG=$HOME/.kube/config
+~~~
+$ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.21.10+k3s1 sh -s - --docker --write-kubeconfig-mode 644
 
-- kubectl get pods -A
-- kubectl get nodes
-- kubectl get cs
-- kubectl cluster-info
+$ mkdir ~/.kube
+$ sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config && sudo chown vagrant:vagrant ~/.kube/config
+$ export KUBECONFIG=$HOME/.kube/config
+~~~
 
-- sudo cat /var/lib/rancher/k3s/server/node-token
+**2. Check Cluster**
 
-## Login vm02
+~~~
+$ kubectl get pods -A
+$ kubectl get nodes
+$ kubectl get cs
+$ kubectl cluster-info
+~~~
 
-- curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.21.10+k3s1 K3S_URL=https://vm01:6443 K3S_TOKEN=K1064cad4981b768acbbb792cc49e7c547809dd646aa7098a009c0709cb328d4ba8::server:056e84d47a71d7b2068902216856c7f8 sh -
+- Type cluster-token
 
+~~~
+sudo cat /var/lib/rancher/k3s/server/node-token
+~~~
 
-2. Deploy workload
+**3. Add worker node**
 
-- kubectl create deployment nginx --image nginx --port 80
-- kubectl expose deployment nginx
-- kubectl get svc
-- kubectl get pods
-- kubectl exec -it $(kubectl get pods -l app=nginx -o name) -- bash
-- curl -v nginx
+- Login vm02
+
+~~~
+$ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.21.10+k3s1 K3S_URL=https://vm01:6443 K3S_TOKEN=K1064cad4981b768acbbb792cc49e7c547809dd646aa7098a009c0709cb328d4ba8::server:056e84d47a71d7b2068902216856c7f8 sh -
+~~~
+
+**4. Deploy workload**
+
+~~~
+$ kubectl create deployment nginx --image nginx --port 80
+$ kubectl expose deployment nginx
+$ kubectl get svc
+$ kubectl get pods
+$ kubectl exec -it $(kubectl get pods -l app=nginx -o name) -- bash
+$ curl -v nginx
+~~~
 
