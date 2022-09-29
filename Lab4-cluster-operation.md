@@ -1,23 +1,33 @@
-### Lab4. Cluster Operation
+### Lab4. Cluster Operation - Backup / Logging / Monitoring
+
+&nbsp;
 
 **1) Cluster Backup**
 
+- Apps > Search phpbb > Install
 - RKE > Tools > snapshots > Snapshot Now
-- Deploy nginx 
+
+- Delete Apps > phpbb
+
 - Restore snapshot
+
+&nbsp;
 
 **2) Application Logging**
 
-- Create Project "Observability"
+- Select Project "System"
 
-- Apps --> Launch --> Config Pod AntiAffinity Type "soft"
-- Install Logging
-- Connect kibana
+- Apps --> Launch --> Search "efk" > Config Pod AntiAffinity Type "soft", Enable Filebit, Enable Metricbit "false"
+- Launch
+- Connect kibana  : Select App > ekf > /index.html
 
 - Select Cluster rke > Tools > Logging > ElasticSearch
 - Endpoint "http://elasticsearch-master.efk:9200" > Test
 - Connect kibana
 - Create index pattern > rke*
+- Select Discover
+
+&nbsp;
 
 **3) Enable monitoring**
 
