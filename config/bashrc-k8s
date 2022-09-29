@@ -1,6 +1,7 @@
 # k8s alias
 
 source <(kubectl completion bash)
+complete -o default -F __start_kubectl k
 
 alias k=kubectl
 alias vi=vim
