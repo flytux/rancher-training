@@ -1,5 +1,7 @@
 ### Lab3. create rke cluster from rancher
 
+&nbsp;
+
 **1) Drain node vm02**
 
 - Apply PodDisruptioPolicy
@@ -19,6 +21,7 @@ spec:
 - Cluster > local > Nodes > vm02
 - ... > Drain
 
+&nbsp;
 
 **2) Uninstall k3s**
 
@@ -28,6 +31,8 @@ spec:
 $ k3s-agent-uninstall.sh # Delete k3s agent node
 $ sudo rm -rf /etc/rancher/* 
 ~~~
+
+&nbsp;
 
 **3) Install RKE from Rancher**
 
@@ -39,6 +44,9 @@ $ sudo rm -rf /etc/rancher/*
 - Login vm02
 - Paste & Execute command
 
+&nbsp;
+
+
 **4) Check cluster status**
 
 - Login vm01
@@ -46,6 +54,8 @@ $ sudo rm -rf /etc/rancher/*
 ~~~
 $ k logs -f $(kubectl get pods -l app=rancher -o name)
 ~~~
+
+&nbsp;
 
 **5) Check workloads**
 
