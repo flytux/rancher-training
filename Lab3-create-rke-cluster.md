@@ -9,7 +9,7 @@ $ k3s-agent-uninstall.sh # Delete k3s agent node
 $ sudo rm -rf /etc/rancher/* 
 ~~~
 
-**2) Install RKE from Rancher
+**2) Install RKE from Rancher**
 
 - Login https://rancher.vm01
 
