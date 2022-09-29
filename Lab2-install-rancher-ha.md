@@ -1,9 +1,10 @@
-### Lab3. Install Rancher in cluster HA
+### Lab2. Install Rancher in cluster HA
 
 **1) Check cluster**
 
 ~~~
 $ kcg
+$ sed -i 's/default/k3s/g' ~/.kube/config
 $ kc k3s
 ~~~
 
