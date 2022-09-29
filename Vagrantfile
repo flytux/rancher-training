@@ -6,6 +6,8 @@ Vagrant.configure("2") do |config|
   config.vm.define "vm01" do |node|
     node.vm.box = "opensuse/Leap-15.3.x86_64"
     node.vm.hostname = "vm01"
+    
+    node.vm.network "private_network", ip: "172.100.100.101"
 
     node.vm.provider "libvirt" do |lv|
       lv.memory = "8192"
@@ -27,6 +29,8 @@ Vagrant.configure("2") do |config|
   config.vm.define "vm02" do |node|
     node.vm.box = "opensuse/Leap-15.3.x86_64"
     node.vm.hostname = "vm02"
+    
+    node.vm.network "private_network", ip: "172.100.100.201"
 
     node.vm.provider "libvirt" do |lv|
       lv.memory = "8192"
