@@ -1,4 +1,4 @@
-### Lab 1: Install K3S Cluster
+### Lab 1. Install K3S Cluster
 
 **0. Pre-work**
 
