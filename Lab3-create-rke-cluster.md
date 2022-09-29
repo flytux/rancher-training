@@ -19,3 +19,10 @@ $ sudo rm -rf /etc/rancher/*
 - Login vm02
 - Paste & Execute command
 
+**) Check cluster status**
+
+- Login vm01
+
+~~~
+$ k logs -f $(kubectl get pods -l app=rancher -o name)
+~~~
