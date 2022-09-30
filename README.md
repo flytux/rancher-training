@@ -6,6 +6,6 @@
 ### Lab 3. [Create RKE cluster](Lab3-create-rke-cluster.md)
 ### Lab 4. [Cluseter Operation - Backup, Logging, Monitoring](Lab4-cluster-operation.md)
 ### Lab 5. [User Management with openLDAP](Lab5-user-management-openldap.md)
-### Lab 6. [Enable Service Mesh with Istio](Lab6-servoce-mesh-with-istio.md)
+### Lab 6. [Enable Service Mesh with Istio](Lab6-service-mesh-with-istio.md)
 ### Lab 7. Install tekton - argocd CI/CD pipelines
 ### Lab 8. Add spring-boot monitoring dashboard
