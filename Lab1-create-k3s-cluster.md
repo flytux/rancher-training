@@ -16,9 +16,20 @@ $ git clone https://github.com/flytux/rancher-training
 
 $ cd rancher-training
 $ sudo cp bins/* /usr/local/bin
+~~~
 
+- Option 1) bash user
+
+~~~
 $ cat config/bashrc-k8s >> ~/.bashrc
 $ source ~/.bashrc
+~~~
+
+- Option 2) zsh user
+~~~
+$ tar xvf charts/code-server/scripts/dev-shell.tgz -C ~
+$ sudo zypper in -y zsh
+$ zsh
 ~~~
 
 **1. Install k3s**
