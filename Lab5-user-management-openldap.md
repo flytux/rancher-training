@@ -1,4 +1,4 @@
-### Lab 5. User management with OpenLDAP
+### Lab 5. User management with openLDAP
 
 **0) Multi-cluster context settings**
 
