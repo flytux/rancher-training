@@ -1,8 +1,9 @@
-Lab 5. User management with keycloak
+### Lab 5. User management with OpenLDAP
 
-- install ldap
-  helm install openldap -f values.yaml . -n openldap --set replicaCount=1 --set phpldapadmin.ingress.hosts[0]=ldapadmin.vm02 
-- keycloak create user / realm
-- keycloak oidc setting
-- rancher setting
-- check login
+**1) install ldap**
+
+- helm install openldap -f values.yaml . -n openldap
+
+**2) Login to phpldapadmin & create group / users**
+
+**3) Rancher authenticate settings** 
