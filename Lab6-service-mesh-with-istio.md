@@ -7,4 +7,5 @@
 - Cluster > RKE > System > Check Istio-System namespace workdloads 
 
 **2) Deploy Istio Enabled workloads**
-- 
+- Cluster > rke > Observability > Namespace > Add namespace > Name "istio-books" > Enable istio sidecar auto-injection > Create
+- Resources > Workloads > Import YAML > Copy [istio-books](./config/istio-books.yaml)
