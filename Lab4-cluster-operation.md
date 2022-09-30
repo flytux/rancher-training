@@ -15,8 +15,8 @@
 
 **2) Application Logging**
 
-- Select Project "System"
-
+- Cluster > rke > Add Project > Observability
+- Select Cluster > rke > Observability Project
 - Apps --> Launch --> Search "efk" > Config Pod AntiAffinity Type "soft", Enable Filebit, Enable Metricbit "false"
 - Launch
 - Connect kibana  : Select App > ekf > /index.html
