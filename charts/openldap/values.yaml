@@ -88,7 +88,7 @@ service:
 
   #loadBalancerIP: 
   #loadBalancerSourceRanges: []
-  type: ClusterIP
+  type: NodePort
   sessionAffinity: None
 
 # Default configuration for openldap as environment variables. These get injected directly in the container.
@@ -123,15 +123,14 @@ pdb:
   maxUnavailable: ""
 
 # Custom openldap configuration files used to override default settings
-# customLdifFiles:
-#  01-default-users.ldif: |-
-#    dn: ou=users,dc=sso,dc=kubeworks,dc=net
-#    objectClass: organizationalUnit
-#    ou: users
-#
-#    dn: ou=groups,dc=sso,dc=sso,dc=kubeworks,dc=net
-#    objectClass: organizationalUnit
-#    ou: groups
+customLdifFiles:
+  01-default-users.ldif: |-
+  dn: ou=users,dc=sso,dc=kubeworks,dc=net
+  objectClass: organizationalUnit
+  ou: users
+  dn: ou=groups,dc=sso,dc=sso,dc=kubeworks,dc=net
+  objectClass: organizationalUnit
+  ou: groups
 
 # Custom files with provided contents to be added in container.
 customFileSets: []
@@ -445,5 +444,5 @@ phpldapadmin:
     pathType: Prefix
     ## Ingress Host
     hosts:
-    - ldapadmin.vm01
+    - ldapadmin.vm02
      
