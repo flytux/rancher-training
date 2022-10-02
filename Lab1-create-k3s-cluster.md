@@ -28,7 +28,6 @@ $ source ~/.bashrc
 - Option 2) zsh user
 ~~~
 $ tar xvf charts/code-server/scripts/dev-shell.tgz -C ~
-$ sudo zypper in -y zsh
 $ zsh
 ~~~
 
