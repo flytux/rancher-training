@@ -12,6 +12,7 @@ $ kc k3s
 ~~~
 $ k apply -f charts/cert-manager/cert-manager-v1.8.2.yaml
 $ k get pods -n cert-manager
+$ k get pods -n cert-manager -w
 
 $ helm install rancher -f charts/rancher/values.yaml ./charts/rancher/ -n cattle-system --create-namespace
 ~~~
