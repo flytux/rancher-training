@@ -15,6 +15,8 @@ $ k get pods -n cert-manager
 $ k get pods -n cert-manager -w
 
 $ helm install rancher -f charts/rancher/values.yaml ./charts/rancher/ -n cattle-system --create-namespace
+$ kn cattle-system
+$ k get pods
 ~~~
 
 **3) Check Rancher**
