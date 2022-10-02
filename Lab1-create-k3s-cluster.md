@@ -53,7 +53,7 @@ $ kubectl cluster-info
 - Type cluster-token
 
 ~~~
-sudo cat /var/lib/rancher/k3s/server/node-token
+$ sudo cat /var/lib/rancher/k3s/server/node-token
 ~~~
 
 **3. Add worker node**
