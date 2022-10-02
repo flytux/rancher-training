@@ -2,6 +2,10 @@
 
 &nbsp;
 
+**0) Login Rancher https://rancher.vm01
+
+&nbsp;
+
 **1) Drain node vm02**
 
 - Apply PodDisruptioPolicy
