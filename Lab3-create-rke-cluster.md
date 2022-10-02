@@ -6,28 +6,20 @@
 
 &nbsp;
 
-**1) Drain node vm02**
+**1) Move Rancher to vm01**
+- Cluster > local > System > Resources > Workload > rancher
+- Check Scaling/Upgrade Policy > 'Rolling: start new pods, then stop old'
+- Node Scheduling > Run ... on a specific node > vm01 > Save
 
-- Apply PodDisruptioPolicy
-- Import YAML to cattle-system namespace
-~~~
-apiVersion: policy/v1
-kind: PodDisruptionBudget
-metadata:
-  name: rancher
-spec:
-  minAvailable: 1
-  selector:
-    matchLabels:
-      app: rancher
-~~~
+&nbsp;
 
+**2) Drain node vm02**
 - Cluster > local > Nodes > vm02
 - ... > Drain
 
 &nbsp;
 
-**2) Uninstall k3s**
+**3) Uninstall k3s**
 
 - Login vm02
 
@@ -36,14 +28,22 @@ $ k3s-agent-uninstall.sh # Delete k3s agent node
 $ sudo rm -rf /etc/rancher/* 
 ~~~
 
+- Login vm01
+
+~~~
+$ kubectl get nodes
+$ kubectl delete node vm02
+~~~
+
+
 &nbsp;
 
-**3) Install RKE from Rancher**
+**4) Install RKE from Rancher**
 
 - Login https://rancher.vm01
 
 - Global > Add Cluster > Create a new > existing nodes
-- Cluster Name > Next > check etcd, control plane, worker
+- Cluster Name "rke" > Next > check etcd, control plane, worker
 - Copy command
 - Login vm02
 - Paste & Execute command
@@ -51,7 +51,7 @@ $ sudo rm -rf /etc/rancher/*
 &nbsp;
 
 
-**4) Check cluster status**
+**5) Check cluster status**
 
 - Login vm01
 
@@ -61,15 +61,5 @@ $ k logs -f $(kubectl get pods -l app=rancher -o name)
 
 &nbsp;
 
-**5) Check workloads**
-
-- Edit cattle-cluster-agent YAML
-- add hostaliases rancher.vm01
-
-~~~
-     dnsPolicy: ClusterFirst # After dnsPolicy 
-     hostAliases:
-      - hostnames:
-        - rancher.vm01
-        ip: 10.128.0.54
-~~~
+**6) Check workloads**
+- Cluster > rke > System
