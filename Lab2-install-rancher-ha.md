@@ -3,7 +3,6 @@
 **1) Check cluster**
 
 ~~~
-$ kcg
 $ sed -i 's/default/k3s/g' ~/.kube/config
 $ kc k3s
 ~~~
