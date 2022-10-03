@@ -1,0 +1,1 @@
+kubectl create secret -n build generic argocd-env-secret '--from-literal=ARGOCD_AUTH_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJhZG1pbjphcGlLZXkiLCJuYmYiOjE2NjQ3OTMyOTEsImlhdCI6MTY2NDc5MzI5MSwianRpIjoiODc5NmYwNDktNjBkNC00Y2QzLTllMDYtYjVkYmYzNmVmZDE5In0.Q6V5_2zWDu7pSjFOpkJSqY0Uf4-AHlSX_TZd-_4O4eM'
