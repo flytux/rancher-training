@@ -4,8 +4,8 @@
 
 **1) Cluster Backup**
 
-- Cluster rke > Default > Apps > Search phpbb > Install
-- Login phpbb with service link in App panel
+- Cluster rke > Default > Apps > Launch > Search phpbb > set phpBB password > Launch
+- Login phpbb with service link in App panel (ex. 30888/tcp)
 - Cluster rke > Tools > snapshots > Snapshot Now
 
 - Delete Apps > phpbb
