@@ -33,5 +33,5 @@
 **3) Enable monitoring**
 
 - Tools > Monitoring > Enable
-
+- Cluster rke > System > Resources > Workloads
 
