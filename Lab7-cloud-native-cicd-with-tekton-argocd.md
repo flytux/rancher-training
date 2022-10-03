@@ -1,49 +1,36 @@
-### Lab 7. User management with openLDAP
+### Lab 7. Cloud Native CI/CD with tekton and argocd
 
-**0) Multi-cluster context settings**
+**0) Install Gitea, Docker Registry**
 
-- https://rancher.vm01/
-- Cluster > rke > Kubeconfig File > Copy to clipboard
+- add hostnames in local hosts file : 
+  %YOUR VM02 IP% gitea.vm02 nexus.vm02 tekton.vm02 argocd.vm02
 - Login k8sadm@vm01
+
 ~~~
-$ vi ~/.kube/config-rke
-~~~
-- paste & save (wq)
-~~~
-$ export KUBECONFIG=$HOME/.kube/config:$HOME/.kube/config-rke
-$ kcg
 $ kc rke
+$ kcg
+$ k apply -f charts/gitea/deploy-gitea.yml
+~~~
+- http://gitea.vm02
+- Set Gitea Base URL : http://gitea.vm02
+- Install Gitea
+- Register User
+- New migration URL : https://github.com/flytux/kw-mvn.git
+
+~~~
+$ helm install docker-registry -f charts/docker-registry/values.yaml charts/docker-registry -n registry --create-namespace
+$ curl -v vm02:30005/v2/_catalog
 ~~~
 
-**1) install ldap**
+**1) Install Tekton, Dashboard, Triggers
 
 ~~~
-$ helm install openldap -f charts/openldap/values.yaml charts/openldap -n openldap --create-namespace
+$ kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.29.1/release.yaml
+$ k apply -f charts/tekton/tekton-dashboard-release.yaml
+$ kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previous/v0.17.1/release.yaml
+$ kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previous/v0.17.1/interceptors.yaml
 ~~~
+- http://tekton.vm02
 
-**2) Login to phpldapadmin & create group / users**
 
-- http://ldapadmin.vm02
-- Login with password "admin"
-- select dc=sso in left pane
-- create child entry > Generic: Organisational Unit > type "groups" > create object > commit
-- select dc=sso in left pane
-- create a child entry > Generic: Organisational Unit > type "users" > create object > commit
-- select "ou=groups" in left pane
-- create a child entry > Generic: POSIX Group > type "ldapusers" > create object > commit
-- select "ou=users" in left pane
-- create a child entry > Generic: User Account > type first name, last name, password > select gid "ldapusers" > create object > commit
-- remeber username & password
-
-**3) Rancher authenticate settings** 
-- https://rancher.vm01/g/security/authentication/openldap
-- Hostname or IP address > VM's Internal IP (ex. 10.128.0.55)
-- Port : 30389
-- Service Account Distinguished Name : cn=admin,dc=sso,dc=kubeworks,dc=net, Service Account Password : admin
-- User Search Base : ou=users,dc=sso,dc=kubeworks,dc=net
-- Group Search Base : ou=groups,dc=sso,dc=kubeworks,dc=net
-- Click "Authenticate with OpenLDAP
-
-**4) Login with LDAP**
-- https://rancher.vm01 login with LDAP user name & password
 
