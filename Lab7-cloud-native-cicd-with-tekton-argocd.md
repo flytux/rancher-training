@@ -22,7 +22,7 @@ $ helm install docker-registry -f charts/docker-registry/values.yaml charts/dock
 $ curl -v vm02:30005/v2/_catalog
 ~~~
 
-**1) Install Tekton, Dashboard, Triggers
+**1) Install Tekton, Dashboard, Triggers**
 
 ~~~
 $ kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.29.1/release.yaml
