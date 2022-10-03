@@ -4,12 +4,14 @@
 
 **1) Cluster Backup**
 
-- Apps > Search phpbb > Install
-- RKE > Tools > snapshots > Snapshot Now
+- Cluster rke > Default > Apps > Search phpbb > Install
+- Login phpbb with service link in App panel
+- Cluster rke > Tools > snapshots > Snapshot Now
 
 - Delete Apps > phpbb
 
-- Restore snapshot
+- Cluster rke > Tools > snapshots > Restore snapshot
+- Cluster rke > Default > Resources > Workloads
 
 &nbsp;
 
