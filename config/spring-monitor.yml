@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: spring-boot-actuator-monitor
+  namespace: cattle-prometheus
+spec:
+  endpoints:
+  - interval: 30s
+    path: /actuator/prometheus
+    port: http-port
+  namespaceSelector:
+    matchNames:
+    - deploy
+  selector:
+    matchLabels:
+      app: dev
