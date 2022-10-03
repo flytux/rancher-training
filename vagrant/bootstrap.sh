@@ -30,6 +30,8 @@ useradd -m -u 2000 -g 2000 k8sadm
 echo -e "1\n1" | passwd k8sadm >/dev/null 2>&1
 echo ' k8sadm ALL=(ALL)   ALL' >> /etc/sudoers
 
+usermod -aG docker k8sadm
+
 #sudo -u k8sadm -H sh -c "ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N \"\";sshpass -p 1 ssh-copy-id k8sadm@vm01;sshpass -p 1 ssh-copy-id k8sadm@vm02"
 
 
