@@ -7,7 +7,7 @@
 &nbsp;
 
 **1) Move Rancher to vm01**
-- Cluster > local > System > Resources > Workload > rancher
+- Cluster > local > System > Resources > Workload > rancher > Edit
 - Check Scaling/Upgrade Policy > 'Rolling: start new pods, then stop old'
 - Node Scheduling > Run ... on a specific node > vm01 > Save
 
