@@ -1,10 +1,10 @@
 ### Lab 6. Enable Service Mesh with Istio
 
 **1) Enable Istio from Rancher**
-- Cluster > RKE > Tools > Istio
+- Cluster > rke > Tools > Istio
 - Group Access > Select Allow All
 - Ingress Gateway > Enable > True > Enable
-- Cluster > RKE > System > Check Istio-System namespace workdloads 
+- Cluster > rke > System > Check Istio-System namespace workloads 
 
 **2) Deploy Istio Enabled workloads**
 - Cluster > rke > Observability > Namespace > Add namespace > Name "istio-books" > Enable istio sidecar auto-injection > Create
@@ -14,7 +14,7 @@
 **3) Add Gateway / Virtual Service**
 - Resources > Istio > Gateway > Import YAML > Copy [istio-book-gateway](./config/book-gateway.yml)
 - Default Namespace > istio-books > Import
-- Resources > Istio > Virtual Services > Copy [book-virtual-service](./config/book-virtual-service.yml)
+- Resources > Istio > Virtual Services >  Import YAML > Copy [book-virtual-service](./config/book-virtual-service.yml)
 - Default Namespace > istio-books > Import
 - Check Service from web browser http://vm02:31380/productpage
 - Reload page 20 times (F5) and check Book Reviews rotates
@@ -25,7 +25,7 @@
 **4) Add Destination Rule / Virtual Services**
 - Resources > Istio > Destination Rules > Import YAML > Copy [istio-book-destination-rule](./config/istio-book-destination-rule.yml)
 - Default Namespace > istio-books > Import
-- Resources > Istio > Virtual Services > Copy [istio-book-virtual-services-traffic-control](./config/istio-book-virtual-service-traffic-control.yml)
+- Resources > Istio > Virtual Services > Import YAML > Copy [istio-book-virtual-services-traffic-control](./config/istio-book-virtual-service-traffic-control.yml)
 - Default Namespace > istio-books > Import
 - Check Service from web browser http://vm02:31380/productpage
 - Reload page 20 times (F5) and check Book Reviews rotates
