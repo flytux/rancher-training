@@ -18,7 +18,21 @@ $ k apply -f charts/gitea/deploy-gitea.yml
 - Register User ID : tekton, Password: 12345678
 - New migration > Git > https://github.com/flytux/kw-mvn.git
 - New migration > Git > https://github.com/flytux/kw-mvn-deploy.git
-
+~~~
+$ # Add gitea dns name to coredns
+$ k edit cm coredns -n kube-system
+$ # Add below
+    health {
+          lameduck 5s
+    }
+    
+     hosts {
+        10.128.0.56 gitea.vm02
+        fallthrough
+     }
+$ :wq
+~~~
+- Install Docker Registry & Docker In-secure Setttings
 ~~~
 $ helm install docker-registry -f charts/docker-registry/values.yaml charts/docker-registry -n registry --create-namespace
 $ curl -v vm02:30005/v2/_catalog
@@ -69,7 +83,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 **4) argoCD login and create App**
 
-- Cluster rke >? System > Resources > Workloads > nginx-ingress-controller > ... > Edit
+- Cluster rke > System > Resources > Workloads > nginx-ingress-controller > ... > Edit
 - Show Advanced options > Command > Command > Add "--enable-ssl-passthrough" to the end of arguments > Save
 
 - Login argoCD : https://argocd.vm02
@@ -85,7 +99,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 - Directory Recurse : Check > Create
 - Sync > Auto-create Namespace : Check
 
-**5) Create argocd-token
+**5) Create argocd-token**
 - Rancher > Cluster rke > Devops > Resource > Config > argocd-cm > Edit 
 - add data >
   Key: accounts.admin: Value: apiKey, login
@@ -101,7 +115,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 - $ charts/tekton/argo-token.sh
 
 
-**) Run Pipeline
+**6) Run Pipeline**
 ~~~
 $ kcg
 $ kc rke
@@ -111,3 +125,10 @@ $ tkn pr logs -f
 ~~~
 - http://tekton.vm02/#/namespaces/build/pipelineruns
   
+**7) Add Webhook to Gitea Repo**
+- http://gitea.vm02/tekton/kw-mvn
+- Settings > Webhooks > Add Webhook > Gitea
+- Target URL : http://el-build-listener.build:8080
+- Add Webhook
+- Click Webhook > Test Delivery
+- Check Pipeline Runs!!!
