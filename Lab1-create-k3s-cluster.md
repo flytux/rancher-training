@@ -5,7 +5,7 @@
 - Add /etc/hosts on vm01, vm02
 ~~~
 172.100.100.101 vm01 rancher.vm01
-172.100.100.201 vm02
+172.100.100.201 vm02 tekton.vm02 gitea.vm02 argocd.vm02
 ~~~
 
 - Clone workshop repo 
