@@ -50,4 +50,64 @@ $ kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previ
 - http://tekton.vm02
 
 
+**2) Install Pipeline**
 
+~~~
+$ k create ns build
+$ kn build
+$ k apply -f charts/tekton/pipeline
+$ tkn t ls
+$ tkn p ls
+~~~
+
+**3) Install argoCD**
+~~~
+$ kubectl create namespace argocd
+$ kubectl apply -n argocd -f charts/argocd/
+$ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d # Get admin password
+~~~
+
+**4) argoCD login and create App**
+
+- Cluster rke >? System > Resources > Workloads > nginx-ingress-controller > ... > Edit
+- Show Advanced options > Command > Command > Add "--enable-ssl-passthrough" to the end of arguments > Save
+
+- Login argoCD : https://argocd.vm02
+- ID : admin
+- Password : # Get admin password
+- Manage > Reposotories > Connect Repo Using HTTPS > Project : default 
+- Repository URL : http://gitea.gitea:3000/tekton/kw-mvn-deploy.git
+- Username: tekton, Password: 12345678 > Connect
+- ... > Create Application > Application Name : kw-mvn-deploy > Project Name : default
+- Revison > main > Path : .
+- Cluster URL : https://kubernetes.default.svc
+- Namespace : deploy
+- Directory Recurse : Check > Create
+- Sync > Auto-create Namespace : Check
+
+**5) Create argocd-token
+- Rancher > Cluster rke > Devops > Resource > Config > argocd-cm > Edit 
+- add data >
+  Key: accounts.admin: Value: apiKey, login
+- Save
+
+- Login argocd : https://argocd.vm02
+- Manage > Account > admin > Tokens > Generate New
+- Copy New Token:
+
+- Login vm01
+- $  charts/tekton/argo-token.sh
+- Replace ARGOCD_AUTH_TOKEN value with New Token value and wq
+- $ charts/tekton/argo-token.sh
+
+
+**) Run Pipeline
+~~~
+$ kcg
+$ kc rke
+$ kn build
+$ k create -f charts/tekton/pipeline/pr-kw-build.yml
+$ tkn pr logs -f 
+~~~
+- http://tekton.vm02/#/namespaces/build/pipelineruns
+  
