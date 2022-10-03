@@ -131,4 +131,10 @@ $ tkn pr logs -f
 - Target URL : http://el-build-listener.build:8080
 - Add Webhook
 - Click Webhook > Test Delivery
-- Check Pipeline Runs!!!
+- Check Pipeline Runs
+
+**7) Git push source repo triggiers tekton**
+- edit source and commit
+- Check Pipeline Runs
+- Check argocd app deployment status
+- Check application : http://vm02:30088/ 
