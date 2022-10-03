@@ -62,4 +62,16 @@ $ k logs -f $(kubectl get pods -l app=rancher -o name)
 &nbsp;
 
 **6) Check workloads**
-- Cluster > rke > System
+- Cluster > rke > System > Resources > Workloads
+
+
+- Optional) Add hostAliases to rancher agent
+  - Cluster > rke > System > Resources > Workloads > Rancher > View / Edit YAML
+
+    ~~~ 
+    # Add below after dnsPolicy line
+       hostAliases:
+       - hostnames:
+         - rancher.vm01
+         ip: 172.100.100.101
+    ~~~
