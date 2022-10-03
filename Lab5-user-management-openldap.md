@@ -52,6 +52,7 @@ $ helm install openldap -f charts/openldap/values.yaml charts/openldap -n openld
 - Put your username & password from openldap create user
 - Click "Authenticate with OpenLDAP"
 
-**4) Login with LDAP**
+**4) Login with LDAP user credentials**
+- Logout admin
 - https://rancher.vm01 login with LDAP user name & password
 
