@@ -97,7 +97,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 - Cluster URL : https://kubernetes.default.svc
 - Namespace : deploy
 - Directory Recurse : Check > Create
-- Sync > Auto-create Namespace : Check
+- Select App: kw-mvn > Sync > Auto-create Namespace : Check > Syncronize
 
 **5) Create argocd-token**
 - Rancher > Cluster rke > Devops > Resource > Config > argocd-cm > Edit 
