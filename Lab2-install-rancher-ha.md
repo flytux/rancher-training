@@ -5,6 +5,7 @@
 ~~~
 $ sed -i 's/default/k3s/g' ~/.kube/config
 $ kc k3s
+$ cd ~/rancher-training
 ~~~
 
 **2) Install cert-manager / Rancher with helm**
