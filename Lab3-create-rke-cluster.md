@@ -2,7 +2,7 @@
 
 &nbsp;
 
-**0) Login Rancher https://rancher.vm01
+**0) Login Rancher https://rancher.vm01**
 
 &nbsp;
 
