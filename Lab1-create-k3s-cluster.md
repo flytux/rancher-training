@@ -48,7 +48,7 @@ $ source ~/.bashrc
 $ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.21.10+k3s1 sh -s - --docker --write-kubeconfig-mode 644
 
 $ mkdir ~/.kube
-$ sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config && sudo chown k8sadm:k8sadm ~/.kube/config
+$ sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config && sudo chown k8sadm ~/.kube/config
 $ export KUBECONFIG=$HOME/.kube/config
 ~~~
 
