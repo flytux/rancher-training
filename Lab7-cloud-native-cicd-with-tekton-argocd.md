@@ -52,6 +52,8 @@ $ sudo systemctl restart docker
 $ sudo docker login vm02:30005
 # ID / Password > tekton / 1 
 ~~~
+- Add Proeject "Devops" in Rancher
+- Move gitea, registry namespace to "DevOps" project
 
 **1) Install Tekton, Dashboard, Triggers**
 
@@ -133,8 +135,8 @@ $ tkn pr logs -f
 - Click Webhook > Test Delivery
 - Check Pipeline Runs
 
-**7) Git push source repo triggiers tekton**
-- edit source and commit
+**7) Git push source repo will trigger tekton pipeline**
+- Edit source and commit
 - Check Pipeline Runs
 - Check argocd app deployment status
 - Check application : http://vm02:30088/ 
