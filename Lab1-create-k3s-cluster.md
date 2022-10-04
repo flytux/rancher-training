@@ -2,10 +2,17 @@
 
 **0. Pre-work**
 
-- Add /etc/hosts on vm01, vm02
+- Add host dns names to local
 ~~~
-172.100.100.101 vm01 rancher.vm01
-172.100.100.201 vm02 tekton.vm02 gitea.vm02 argocd.vm02
+%VM01_EXTERNAL_IP% vm01 rancher.vm01
+%VM02_EXTERNAL_IP% vm02 ldapamdin.vm02 gitea.vm02 tekton.vm02, argocd.vm02 grafana.vm02
+~~~
+
+- Add /etc/hosts on vm01, vm02
+
+~~~
+%VM01_INTERNAL_IP% vm01 rancher.vm01
+%VM02_INTERNAL_IP% vm02 
 ~~~
 
 - Clone workshop repo 
@@ -22,18 +29,18 @@ $ sudo systemctl enable docker
 $ sudo systemctl start docker
 ~~~
 
-- Option 1) bash user
+- zsh user setting
+~~~
+$ tar xvf charts/code-server/scripts/dev-shell.tgz -C ~
+$ zsh
+~~~
 
+- For bash user
 ~~~
 $ cat config/bashrc-k8s >> ~/.bashrc
 $ source ~/.bashrc
 ~~~
 
-- Option 2) zsh user
-~~~
-$ tar xvf charts/code-server/scripts/dev-shell.tgz -C ~
-$ zsh
-~~~
 
 **1. Install k3s**
 
