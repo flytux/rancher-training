@@ -2,10 +2,25 @@
 
 **0. Pre-work**
 
-- Add /etc/hosts on vm01, vm02
+- copy ssh-key to local .ssh folder
+- add VM's public IP to hosts
+
 ~~~
-172.100.100.101 vm01 rancher.vm01
-172.100.100.201 vm02 tekton.vm02 gitea.vm02 argocd.vm02
+$ cat << EOF | sudo tee -a /etc/hosts
+GCP_VM01_PublicIP vm01
+GCP_VM02_PublicIP vm02
+EOF
+  
+$ ssh k8sadm@vm01
+~~~~
+
+- Add /etc/hosts on vm01, vm02
+
+~~~
+$ cat << EOF | sudo tee -a /etc/hosts
+GCP_VM01_InternalIP vm01 rancher.vm01
+GCP_VM02_InternalIP vm02 tekton.vm02 gitea.vm02 argocd.vm02 ldapadmin.vm02
+EOF
 ~~~
 
 - Clone workshop repo 
