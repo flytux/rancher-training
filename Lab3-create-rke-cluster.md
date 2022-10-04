@@ -1,5 +1,9 @@
 ### Lab3. create rke cluster from rancher
 
+> RKE Cluster can be installed either from Rancher or RKE binary
+> 
+> SSH key access / Docker required
+
 &nbsp;
 
 **0) Login Rancher https://rancher.vm01**
@@ -50,7 +54,6 @@ $ kubectl delete node vm02
 
 &nbsp;
 
-
 **5) Check cluster status**
 
 - Login vm01
@@ -75,3 +78,67 @@ $ k logs -f $(kubectl get pods -l app=rancher -o name)
          - rancher.vm01
          ip: 172.100.100.101
     ~~~
+
+---
+**Option 4-1) Install RKE from rke binary**
+
+1) Pre-install
+
+~~~
+$ su - k8sadm
+$ ssh-keygen
+- without passphrase
+
+$ ssh-copy-id localhost
+- enter password : 1
+
+$ sh localhost # test login
+$ docker ps # test docker command
+~~~
+
+2) RKE install
+
+Select default vale - enter - **Except SSH Address, User, Control Plance, Worker, Etcd Role**
+
+~~~
+$ rke config
+
+[+] Cluster Level SSH Private Key Path [~/.ssh/id_rsa]: 
+[+] Number of Hosts [1]: 
+~~~
+**[+] SSH Address of host (1) [none]: vm02**
+~~~
+[+] SSH Port of host (1) [22]:
+[+] SSH Private Key Path of host () [none]: 
+[-] You have entered empty SSH key path, trying fetch from SSH key parameter
+[+] SSH Private Key of host () [none]: 
+[-] You have entered empty SSH key, defaulting to cluster level SSH key: ~/.ssh/id_rsa
+~~~
+**[+] SSH User of host () [ubuntu]: k8sadm**
+
+**[+] Is host () a Control Plane host (y/n)? [y]: y**
+
+**[+] Is host () a Worker host (y/n)? [n]: y**
+
+**[+] Is host () an etcd host (y/n)? [n]: y**
+~~~
+[+] Override Hostname of host () [none]: 
+[+] Internal IP of host () [none]: 
+[+] Docker socket path on host () [/var/run/docker.sock]: 
+[+] Network Plugin Type (flannel, calico, weave, canal, aci) [canal]: 
+[+] Authentication Strategy [x509]: 
+[+] Authorization Mode (rbac, none) [rbac]: 
+[+] Kubernetes Docker image [rancher/hyperkube:v1.20.15-rancher2]: 
+[+] Cluster domain [cluster.local]: 
+[+] Service Cluster IP Range [10.43.0.0/16]: 
+[+] Enable PodSecurityPolicy [n]: 
+[+] Cluster Network CIDR [10.42.0.0/16]: 
+[+] Cluster DNS Service IP [10.43.0.10]: 
+[+] Add addon manifest URLs or YAML files [no]:
+~~~
+- copy config
+~~~
+$ mkdir -p ~/.kube
+$ cp kube_config_cluster.yml ~/.kube/config
+$ k get pods -A
+~~~
