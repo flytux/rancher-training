@@ -1,11 +1,21 @@
 ### Lab 2. Install Rancher in cluster HA
 
+> Rancher HA installation inside management cluster (Default number of replicas : 3)
+> 
+> Rancher / Cert-Manager helm charts (Cert-Manager generates and rotates self-signed certificates for rancher)
+> 
+> Rancher managed information stored in management cluster as CRD kubernetes objects
+
+&nbsp;
+
 **1) Check cluster**
 
 ~~~
 $ sed -i 's/default/k3s/g' ~/.kube/config
 $ kc k3s
 ~~~
+
+&nbsp;
 
 **2) Install cert-manager / Rancher with helm**
 
@@ -18,6 +28,8 @@ $ helm install rancher -f charts/rancher/values.yaml ./charts/rancher/ -n cattle
 $ kn cattle-system
 $ k get pods
 ~~~
+
+&nbsp;
 
 **3) Check Rancher**
 
