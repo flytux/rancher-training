@@ -16,6 +16,10 @@ $ git clone https://github.com/flytux/rancher-training
 
 $ cd rancher-training
 $ sudo cp bins/* /usr/local/bin
+
+$ sudo systemctl status docker
+$ sudo systemctl enable docker
+$ sudo systemctl start docker
 ~~~
 
 - Option 1) bash user
