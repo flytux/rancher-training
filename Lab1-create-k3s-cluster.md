@@ -29,13 +29,13 @@ $ sudo systemctl enable docker
 $ sudo systemctl start docker
 ~~~
 
-- zsh user setting
+- 1) shell setting - zsh user
 ~~~
 $ tar xvf charts/code-server/scripts/dev-shell.tgz -C ~
 $ zsh
 ~~~
 
-- For bash user
+- 2) shell setiing - bash user
 ~~~
 $ cat config/bashrc-k8s >> ~/.bashrc
 $ source ~/.bashrc
