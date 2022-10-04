@@ -92,7 +92,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 - Manage > Reposotories > Connect Repo Using HTTPS > Project : default 
 - Repository URL : http://gitea.gitea:3000/tekton/kw-mvn-deploy.git
 - Username: tekton, Password: 12345678 > Connect
-- ... > Create Application > Application Name : kw-mvn-deploy > Project Name : default
+- ... > Create Application > Application Name : kw-mvn > Project Name : default
 - Revison > main > Path : .
 - Cluster URL : https://kubernetes.default.svc
 - Namespace : deploy
