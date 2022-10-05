@@ -16,9 +16,10 @@
 ~~~
 
 - Clone workshop repo 
-- Login vm01
+- Login vm01 : ssh k8sadm@vm01
 
 ~~~
+$ sudo zypper in -y git
 $ git clone https://github.com/flytux/rancher-training
 
 $ cd rancher-training
