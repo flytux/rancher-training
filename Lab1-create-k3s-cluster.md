@@ -83,7 +83,7 @@ $ kubectl get cs
 $ kubectl cluster-info
 ~~~
 
-- Type cluster-token
+- Type cluster-token & Copy
 
 ~~~
 $ sudo cat /var/lib/rancher/k3s/server/node-token
