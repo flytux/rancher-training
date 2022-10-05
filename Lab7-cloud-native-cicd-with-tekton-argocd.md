@@ -1,14 +1,28 @@
 ### Lab 7. Cloud Native CI/CD with tekton and argocd
 
+> Tekton uses kubernetes CRDs - using kubernetes resources - to run CICD pipelines
+> 
+> Light weight / Resource optimized 
+> 
+> Reusable tasks - [Tekton Hub](https://hub.tekton.dev/)
+
+&nbsp;
+
 **0) Install Gitea, Docker Registry**
 
 - add hostnames in local hosts file : 
-  %YOUR VM02 IP% gitea.vm02 nexus.vm02 tekton.vm02 argocd.vm02
+  %YOUR VM02 IP% gitea.vm02 tekton.vm02 argocd.vm02
 - Login k8sadm@vm01
 
 ~~~
 $ kc rke
 $ kcg
+
+# install storage-class, set default
+$ k apply -f charts/local-path/local-path-storage.yaml
+$ k get sc
+$ kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+
 $ k apply -f charts/gitea/deploy-gitea.yml
 ~~~
 
@@ -18,20 +32,7 @@ $ k apply -f charts/gitea/deploy-gitea.yml
 - Register User ID : tekton, Password: 12345678
 - New migration > Git > https://github.com/flytux/kw-mvn.git
 - New migration > Git > https://github.com/flytux/kw-mvn-deploy.git
-~~~
-$ # Add gitea dns name to coredns
-$ k edit cm coredns -n kube-system
-$ # Add below
-    health {
-          lameduck 5s
-    }
-    
-     hosts {
-        10.128.0.56 gitea.vm02
-        fallthrough
-     }
-$ :wq
-~~~
+
 - Install Docker Registry & Docker In-secure Setttings
 ~~~
 $ helm install docker-registry -f charts/docker-registry/values.yaml charts/docker-registry -n registry --create-namespace
@@ -52,8 +53,9 @@ $ sudo systemctl restart docker
 $ sudo docker login vm02:30005
 # ID / Password > tekton / 1 
 ~~~
-- Add Proeject "Devops" in Rancher
-- Move gitea, registry namespace to "DevOps" project
+- Add Project "DEVOPS" in Rancher
+
+&nbsp;
 
 **1) Install Tekton, Dashboard, Triggers**
 
@@ -65,6 +67,9 @@ $ kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previ
 ~~~
 - http://tekton.vm02
 
+- Move gitea, registry, tekton-pipelines namespace to "DEVOPS" project
+
+&nbsp;
 
 **2) Install Pipeline**
 
@@ -75,6 +80,10 @@ $ k apply -f charts/tekton/pipeline
 $ tkn t ls
 $ tkn p ls
 ~~~
+- Add Project "APPS" in Rancher
+- Move build namespace to "APPS" project
+
+&nbsp;
 
 **3) Install argoCD**
 ~~~
@@ -82,6 +91,8 @@ $ kubectl create namespace argocd
 $ kubectl apply -n argocd -f charts/argocd/
 $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d # Get admin password
 ~~~
+
+&nbsp;
 
 **4) argoCD login and create App**
 
@@ -101,8 +112,10 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 - Directory Recurse : Check > Create
 - Sync > Auto-create Namespace : Check
 
+&nbsp;
+
 **5) Create argocd-token**
-- Rancher > Cluster rke > Devops > Resource > Config > argocd-cm > Edit 
+- Rancher > Cluster rke > DEVOPS > Resource > Config > argocd-cm > Edit 
 - add data >
   Key: accounts.admin: Value: apiKey, login
 - Save
@@ -116,6 +129,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 - Replace ARGOCD_AUTH_TOKEN value with New Token value and wq
 - $ charts/tekton/argo-token.sh
 
+&nbsp;
 
 **6) Run Pipeline**
 ~~~
@@ -135,8 +149,28 @@ $ tkn pr logs -f
 - Click Webhook > Test Delivery
 - Check Pipeline Runs
 
-**7) Git push source repo will trigger tekton pipeline**
+&nbsp;
+
+**8) Git push source repo will trigger tekton pipeline**
 - Edit source and commit
 - Check Pipeline Runs
 - Check argocd app deployment status
 - Check application : http://vm02:30088/ 
+
+&nbsp;
+
+**A1) Add dns entry in cluster**
+~~~
+$ # Add gitea dns name to coredns
+$ k edit cm coredns -n kube-system
+$ # Add below
+    health {
+          lameduck 5s
+    }
+    
+     hosts {
+        10.128.0.56 gitea.vm02
+        fallthrough
+     }
+$ :wq
+~~~
