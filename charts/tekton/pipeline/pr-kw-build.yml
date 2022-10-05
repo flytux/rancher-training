@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: kb-build-pipeline-
+  generateName: kw-build-pipeline-
 spec:
   serviceAccountName: sa-pipeline-runner
   pipelineRef:
