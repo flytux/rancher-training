@@ -104,6 +104,7 @@ $ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.21.10+k3s1 K3S_URL=https
 **@ vm01**
 
 ~~~
+$ k get nodes
 $ kubectl create deployment nginx --image nginx --port 80
 $ kubectl expose deployment nginx
 $ kubectl get svc
