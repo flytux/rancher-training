@@ -72,7 +72,6 @@ $ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.21.10+k3s1 sh -s - --doc
 
 $ mkdir ~/.kube
 $ sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config && sudo chown k8sadm ~/.kube/config
-$ export KUBECONFIG=$HOME/.kube/config
 ~~~
 
 #### 2. Check Cluster
