@@ -96,6 +96,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 **4) argoCD login and create App**
 
+- Cluster rke > Namespaces > Select argocd > Move to DEVOPS Project
 - Cluster rke > System > Resources > Workloads > nginx-ingress-controller > ... > Edit
 - Show Advanced options > Command > Command > Add "--enable-ssl-passthrough" to the end of arguments > Save
 
