@@ -170,7 +170,7 @@ $ # Add below
     }
     
      hosts {
-        10.128.0.56 gitea.vm02
+        %INTERNAL_IP_VM02% vm02 gitea.vm02
         fallthrough
      }
 $ :wq
