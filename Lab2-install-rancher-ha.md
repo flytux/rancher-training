@@ -2,6 +2,8 @@
 
 **1) Check cluster**
 
+**@ vm01 **
+
 ~~~
 $ sed -i 's/default/k3s/g' ~/.kube/config
 $ kc k3s
