@@ -27,7 +27,7 @@ $ k apply -f charts/gitea/deploy-gitea.yml
 ~~~
 
 - http://gitea.vm02
-- Set Gitea Base URL : http://gitea.vm02
+- Set Gitea Base URL : http://gitea.gitea:3000
 - Install Gitea
 - Register User ID : tekton, Password: 12345678
 - New migration > Git > https://github.com/flytux/kw-mvn.git
