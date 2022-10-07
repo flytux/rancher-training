@@ -18,6 +18,8 @@
 - Clone workshop repo 
 - Login vm01 : ssh k8sadm@vm01
 
+**@vm01**
+
 ~~~
 $ sudo zypper in -y git
 $ git clone https://github.com/flytux/rancher-training
@@ -30,16 +32,10 @@ $ sudo systemctl enable docker
 $ sudo systemctl start docker
 ~~~
 
-- option 1. zsh user
+- zsh environment setting
 ~~~
 $ tar xvf charts/code-server/scripts/dev-shell.tgz -C ~
 $ zsh
-~~~
-
-- option 2. bash user
-~~~
-$ cat config/bashrc-k8s >> ~/.bashrc
-$ source ~/.bashrc
 ~~~
 
 
@@ -72,11 +68,20 @@ $ sudo cat /var/lib/rancher/k3s/server/node-token
 
 - Login vm02
 
+**@vm02**
+
 ~~~
-$ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.21.10+k3s1 K3S_URL=https://vm01:6443 K3S_TOKEN=%YOUR K3S CLUSTER TOKEN% sh -
+$ sudo systemctl enable docker
+$ sudo systemctl start docker
+
+$ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.21.10+k3s1 K3S_URL=https://vm01:6443 K3S_TOKEN=%YOUR K3S CLUSTER TOKEN% sh -s - --docker
 ~~~
 
 **4. Deploy workload**
+
+- Login vm01
+
+**@vm02**
 
 ~~~
 $ kubectl create deployment nginx --image nginx --port 80
