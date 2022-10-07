@@ -67,17 +67,14 @@ spec:
     - name: "DOCKER_CONFIG"
       value: $(credentials.path)/.docker/
     volumeMounts:
-    - name: $(params.CACHE)
+    - name: m2-cache
       mountPath: /workspace/.m2
-      subPath: m2-cache
-    - name: $(params.CACHE)
-      mountPath: /workspace/.cache
-      subPath: jib-cache
 
   - name: digest-to-results
     image: $(params.MAVEN_IMAGE)
     script: cat $(workspaces.source.path)/target/jib-image.digest | tee /tekton/results/IMAGE_DIGEST
 
   volumes:
-  - name: empty-dir-volume
-    emptyDir: {}
+  - name: m2-cache
+    persistentVolumeClaim:
+      claimName: pvc-cache

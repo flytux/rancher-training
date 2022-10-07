@@ -62,5 +62,6 @@ spec:
       #!/usr/bin/env sh
       #set -e
       argocd app sync $(inputs.params.argo-app-name) --insecure
+      exit 0
       #argocd app wait $(inputs.params.argo-app-name) --sync --health --operation --insecure
 
