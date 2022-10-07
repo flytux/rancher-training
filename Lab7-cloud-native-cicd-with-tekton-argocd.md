@@ -10,8 +10,6 @@
 
 **0) Install Gitea, Docker Registry**
 
-- add hostnames in local hosts file : 
-  %YOUR VM02 IP% gitea.vm02 tekton.vm02 argocd.vm02
 - Login k8sadm@vm01
 
 **@vm01**
