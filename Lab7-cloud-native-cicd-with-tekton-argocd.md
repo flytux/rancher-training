@@ -38,6 +38,20 @@ $ k apply -f charts/gitea/deploy-gitea.yml
 **@vm01**
 
 ~~~
+$ # Add in cluster dns name to coredns
+$ k edit cm coredns -n kube-system
+$ # Add below
+    health {
+          lameduck 5s
+    }
+    
+     hosts {
+        192.0.212.2 vm02
+        fallthrough
+     }
+$ :wq
+~~~
+~~~
 $ helm install docker-registry -f charts/docker-registry/values.yaml charts/docker-registry -n registry --create-namespace
 $ curl -v vm02:30005/v2/_catalog
 
