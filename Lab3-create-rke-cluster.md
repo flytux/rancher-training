@@ -30,6 +30,10 @@
 ~~~
 $ k3s-agent-uninstall.sh # Delete k3s agent node
 $ sudo rm -rf /etc/rancher/* 
+
+$ sudo systemctl status docker
+$ sudo systemctl enable docker
+$ sudo systemctl start docker
 ~~~
 
 - Login vm01
