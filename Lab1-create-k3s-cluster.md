@@ -15,7 +15,7 @@ EOF
 **@vm01 && @vm02***
 ~~~
 $ ssh root@vm01
-$ 
+
 
 cat << EOF | sudo tee -a /etc/hosts
 192.0.212.1 vm01 rancher.vm01
@@ -29,7 +29,7 @@ EOF
 **@vm01**
 
 ~~~
-$ sudo zypper in -y docker
+$ sudo zypper in -y docker zsh
 $ sudo systemctl enable docker
 $ sudo systemctl start docker
 $ ssh-keygen -t rsa -q -f "$HOME/.ssh/id_rsa" -N ""
@@ -55,8 +55,7 @@ $ zsh
 $ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.21.10+k3s1 sh -s - --docker --write-kubeconfig-mode 644
 
 $ mkdir ~/.kube
-$ sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config && sudo chown k8sadm ~/.kube/config
-$ export KUBECONFIG=$HOME/.kube/config
+$ sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config 
 ~~~
 
 **2. Check Cluster**
