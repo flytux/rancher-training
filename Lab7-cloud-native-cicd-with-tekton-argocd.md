@@ -52,12 +52,13 @@ $ sudo docker login vm02:30005
 
 **@vm02**
 
+~~~
+$ cat << EOF | sudo tee -a /etc/docker/daemon.json
+{ 
+  "insecure-registries": ["vm02:30005"]
+}
+EOF
 
-
-$ scp config/daemon.json k8sadm@vm02:/home/k8sadm/
-$ ssh vm02
-
-$ sudo cp daemon.json /etc/docker/
 $ sudo systemctl restart docker
 
 $ sudo docker login vm02:30005
@@ -69,6 +70,8 @@ $ sudo docker login vm02:30005
 
 **1) Install Tekton, Dashboard, Triggers**
 
+**@vm01**
+
 ~~~
 $ kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.29.1/release.yaml
 $ k apply -f charts/tekton/tekton-dashboard-release.yaml
@@ -76,6 +79,8 @@ $ kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previ
 $ kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previous/v0.17.1/interceptors.yaml
 ~~~
 - http://tekton.vm02
+
+- http://rancher.vm01
 
 - Move gitea, registry, tekton-pipelines namespace to "DEVOPS" project
 
@@ -113,6 +118,17 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 - Login argoCD : https://argocd.vm02
 - ID : admin
 - Password : # Get admin password
+
+Option1)
+
+**@vm01**
+
+~~~
+$ k apply -f charts/tekton/argo-app-kw-mvn.yml
+~~~
+
+Option2)
+
 - Manage > Reposotories > Connect Repo Using HTTPS > Project : default 
 - Repository URL : http://gitea.gitea:3000/tekton/kw-mvn-deploy.git
 - Username: tekton, Password: 12345678 > Connect
@@ -142,22 +158,6 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 &nbsp;
 
-**5-1) Add dns entry in cluster**
-~~~
-$ k edit cm coredns -n kube-system
-$ # Add below
-    health {
-          lameduck 5s
-    }
-    hosts {
-       %INTERNAL_IP_VM02% vm02 gitea.vm02
-       fallthrough
-    }
-- :wq
-~~~
-
-&nbsp;
-
 **6) Run Pipeline**
 ~~~
 $ kcg
@@ -169,6 +169,8 @@ $ tkn pr logs -f
 - http://tekton.vm02/#/namespaces/build/pipelineruns
 
 &nbsp;
+
+- Check application : http://vm02:30088/ 
   
 **7) Add Webhook to Gitea Repo**
 - http://gitea.vm02/tekton/kw-mvn
