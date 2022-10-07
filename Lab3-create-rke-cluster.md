@@ -27,6 +27,8 @@
 
 - Login vm02
 
+**@vm02**
+
 ~~~
 $ k3s-agent-uninstall.sh # Delete k3s agent node
 $ sudo rm -rf /etc/rancher/* 
