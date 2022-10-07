@@ -51,11 +51,11 @@ $ sudo docker login vm02:30005
 **@vm02**
 
 ~~~
-$ cat << EOF | sudo tee -a /etc/docker/daemon.json
+$ vi /etc/docker/daemon.json
+# replace below and save
 { 
   "insecure-registries": ["vm02:30005"]
 }
-EOF
 
 $ sudo systemctl restart docker
 
