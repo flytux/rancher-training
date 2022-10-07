@@ -7,6 +7,7 @@
 $ k apply -f config/spring-monitor.yml
 ~~~
 
+- Replace cluster ID from below URL and browse 
 - https://rancher.vm01/k8s/clusters/c-4xpcm/api/v1/namespaces/cattle-prometheus/services/http:access-prometheus:80/proxy/
 
 &nbsp;
