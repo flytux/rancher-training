@@ -40,6 +40,8 @@ $ sudo systemctl start docker
 
 - Login vm01
 
+**@vm01**
+
 ~~~
 $ kubectl get nodes
 $ kubectl delete node vm02
