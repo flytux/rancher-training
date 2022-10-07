@@ -132,6 +132,22 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 &nbsp;
 
+**5-1) Add dns entry in cluster**
+~~~
+$ k edit cm coredns -n kube-system
+$ # Add below
+    health {
+          lameduck 5s
+    }
+    hosts {
+       %INTERNAL_IP_VM02% vm02 gitea.vm02
+       fallthrough
+    }
+- :wq
+~~~
+
+&nbsp;
+
 **6) Run Pipeline**
 ~~~
 $ kcg
@@ -141,6 +157,8 @@ $ k create -f charts/tekton/pipeline/pr-kw-build.yml
 $ tkn pr logs -f 
 ~~~
 - http://tekton.vm02/#/namespaces/build/pipelineruns
+
+&nbsp;
   
 **7) Add Webhook to Gitea Repo**
 - http://gitea.vm02/tekton/kw-mvn
@@ -160,18 +178,3 @@ $ tkn pr logs -f
 
 &nbsp;
 
-**A1) Add dns entry in cluster**
-~~~
-$ # Add gitea dns name to coredns
-$ k edit cm coredns -n kube-system
-$ # Add below
-    health {
-          lameduck 5s
-    }
-    
-     hosts {
-        %INTERNAL_IP_VM02% vm02 gitea.vm02
-        fallthrough
-     }
-$ :wq
-~~~
