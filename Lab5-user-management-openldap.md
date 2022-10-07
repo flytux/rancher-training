@@ -26,7 +26,6 @@ $ k apply -f charts/local-path/local-path-storage.yaml
 ~~~
 $ helm install openldap -f charts/openldap/values.yaml charts/openldap -n openldap --create-namespace
 ~~~
-- add host dns name : %VM02 IP% ldapadmin.vm02
 
 **2) Login to phpldapadmin & create group / users**
 
