@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: kw-mvn
   namespace: argocd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec:
   project: default # You may need to change this!
   source:
