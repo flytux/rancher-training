@@ -24,10 +24,10 @@
 - Connect kibana  : Select App > ekf > /index.html
 
 - Select Cluster rke > Tools > Logging > ElasticSearch
-- Endpoint "http://elasticsearch-master.efk:9200" > Test > Save
+- Endpoint "http://elasticsearch-master.efk:9200" > Save
 
 - Connect kibana
-- Create index pattern > rke* > Next step > Time filter @timestamp > Cretae Index Pattern
+- Create index pattern > rke* > Next step > Time filter @timestamp > Create Index Pattern
 - Select Discover (Compass Icon)
 
 &nbsp;
