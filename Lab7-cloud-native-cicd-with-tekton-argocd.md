@@ -142,7 +142,7 @@ Option2)
 **5) Create argocd-token**
 - Rancher > Cluster rke > DEVOPS > Resource > Config > argocd-cm > Edit 
 - add data >
-  Key: accounts.admin: Value: apiKey, login
+  Key: accounts.admin Value: apiKey, login
 - Save
 
 - Login argocd : https://argocd.vm02
