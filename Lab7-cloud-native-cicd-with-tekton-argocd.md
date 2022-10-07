@@ -14,6 +14,8 @@
   %YOUR VM02 IP% gitea.vm02 tekton.vm02 argocd.vm02
 - Login k8sadm@vm01
 
+**@vm01**
+
 ~~~
 $ kc rke
 $ kcg
@@ -34,6 +36,9 @@ $ k apply -f charts/gitea/deploy-gitea.yml
 - New migration > Git > https://github.com/flytux/kw-mvn-deploy.git
 
 - Install Docker Registry & Docker In-secure Setttings
+
+**@vm01**
+
 ~~~
 $ helm install docker-registry -f charts/docker-registry/values.yaml charts/docker-registry -n registry --create-namespace
 $ curl -v vm02:30005/v2/_catalog
@@ -43,6 +48,11 @@ $ sudo systemctl restart docker
 
 $ sudo docker login vm02:30005
 # ID / Password > tekton / 1 
+~~~
+
+**@vm02**
+
+
 
 $ scp config/daemon.json k8sadm@vm02:/home/k8sadm/
 $ ssh vm02
