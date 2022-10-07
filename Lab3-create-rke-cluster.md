@@ -84,7 +84,7 @@ $ k logs -f $(kubectl get pods -l app=rancher -o name)
        hostAliases:
        - hostnames:
          - rancher.vm01
-         ip: %INTERNAL_IP_VM01%
+         ip: 192.0.212.1
     ~~~
 
 ---
