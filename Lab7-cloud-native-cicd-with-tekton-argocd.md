@@ -150,7 +150,7 @@ Option2)
 - Copy New Token:
 
 - Login vm01
-- $  charts/tekton/argo-token.sh
+- $ vi charts/tekton/argo-token.sh
 - Replace ARGOCD_AUTH_TOKEN value with New Token value and wq
 - $ charts/tekton/argo-token.sh
 
