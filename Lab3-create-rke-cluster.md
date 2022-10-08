@@ -77,6 +77,8 @@ $ k logs -f $(kubectl get pods -l app=rancher -o name)
 
     ~~~ 
     # Add below after dnsPolicy line
+
+       dnsPolicy: ClusterFirst
        hostAliases:
        - hostnames:
          - rancher.vm01
