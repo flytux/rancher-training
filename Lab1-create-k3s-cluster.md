@@ -2,40 +2,27 @@
 
 **0. Pre-work**
 
-- Add host dns names to local
+- Login vm01 and vm02 as root
+
+**@vm01 && @vm02**
+
+- Check and update Your IP Address in ./setup.sh 
 ~~~
-cat << EOF | sudo tee -a /etc/hosts
-192.0.212.1 vm01 rancher.vm01
-192.0.212.2 vm02 tekton.vm02 gitea.vm02 argocd.vm02 ldapadmin.vm02 grafana.vm02
-EOF
-~~~
-
-- Add /etc/hosts on vm01, vm02
-
-**@vm01 && @vm02***
-~~~
-$ ssh root@vm01
-
-
-cat << EOF | sudo tee -a /etc/hosts
-192.0.212.1 vm01 rancher.vm01
-192.0.212.2 vm02 tekton.vm02 gitea.vm02 argocd.vm02 ldapadmin.vm02 grafana.vm02
-EOF
+$ ./setup.sh
 ~~~
 
-- Clone workshop repo 
-- Login vm01 : ssh root@vm01
+- Login vm01 as k8sadm / 1
 
 **@vm01**
 
 ~~~
-$ sudo zypper in -y docker zsh
-$ sudo systemctl enable docker
-$ sudo systemctl start docker
-$ ssh-keygen -t rsa -q -f "$HOME/.ssh/id_rsa" -N ""
 $ ssh-copy-id vm01
 $ ssh-copy-id vm02
+~~~
 
+- Clone workshop repo 
+
+~~~
 $ git clone https://github.com/flytux/rancher-training
 
 $ cd rancher-training
