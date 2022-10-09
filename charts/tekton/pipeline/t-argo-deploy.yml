@@ -57,7 +57,7 @@ spec:
       git commit --allow-empty -m "[tekton] updating image to $(inputs.params.build-id)"
       git push origin $(params.gitops-revision)
   - name: wait-for-argocd-rollout
-    image: quay.io/argoproj/argocd:v2.1.6
+    image: quay.io/argoproj/argocd:v2.4.8
     script: |
       #!/usr/bin/env sh
       #set -e
