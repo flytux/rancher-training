@@ -46,7 +46,7 @@ $ # Add below
     }
     
      hosts {
-        192.0.212.2 vm02
+        192.0.212.2 vm02 # Update YOUR vm02 IP
         fallthrough
      }
 $ :wq
@@ -55,17 +55,12 @@ $ :wq
 $ helm install docker-registry -f charts/docker-registry/values.yaml charts/docker-registry -n registry --create-namespace
 $ curl -v vm02:30005/v2/_catalog
 
-$ sudo cp config/daemon.json /etc/docker
-$ sudo systemctl restart docker
-
-$ sudo docker login vm02:30005
-# ID / Password > tekton / 1 
 ~~~
 
 **@vm02**
 
 ~~~
-$ vi /etc/docker/daemon.json
+$ sudo vi /etc/docker/daemon.json
 # replace below and save
 { 
   "insecure-registries": ["vm02:30005"]
