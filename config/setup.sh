@@ -7,7 +7,7 @@ cat >>/etc/hosts<<EOF
 EOF
 
 echo "Install Docker"
-zypper in -y docker
+zypper in -y docker zsh
 systemctl enable docker
 systemctl start docker
 
