@@ -112,7 +112,7 @@ $ tkn p ls
 
 &nbsp;
 
-**3) Install argoCD**
+**3) Install ArgoCD**
 ~~~
 $ kubectl create namespace argocd
 $ kubectl apply -n argocd -f charts/argocd/
@@ -121,7 +121,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 &nbsp;
 
-**4) argoCD login and create App**
+**4) ArgoCD login and create App**
 
 - Cluster rke > Namespaces > Select argocd > Move to DEVOPS Project
 - Cluster rke > System > Resources > Workloads > nginx-ingress-controller > ... > Edit
