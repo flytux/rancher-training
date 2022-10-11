@@ -7,8 +7,8 @@
 $ k apply -f config/spring-monitor.yml
 ~~~
 
-- Replace cluster ID from below URL and browse 
-- https://rancher.vm01/k8s/clusters/c-4xpcm/api/v1/namespaces/cattle-prometheus/services/http:access-prometheus:80/proxy/
+- Cluster > rke > Project > APPS > Resources > Istio > Prometheus Link
+- Status > Targets
 
 &nbsp;
 
@@ -16,9 +16,7 @@ $ k apply -f config/spring-monitor.yml
 
 - https://rancher.vm01/k8s/clusters/c-4xpcm/api/v1/namespaces/cattle-prometheus/services/http:access-grafana:80/proxy/
 
-- add ingress > cattle-prometheus namespace > access-grafana service > grafana.vm02
-- add to local hosts file
-
+- Cluster > rke > Cluster-Metrics > Grafana Link
 - Login admin / admin
 - Import > Import via panel json
 - Copy and Paste config/spring-monitor.json
