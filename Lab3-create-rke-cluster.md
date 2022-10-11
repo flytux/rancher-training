@@ -82,7 +82,7 @@ $ k logs -f $(kubectl get pods -l app=rancher -o name)
        hostAliases:
        - hostnames:
          - rancher.vm01
-         ip: 192.0.212.1 # Your VM01 IP Address
+         ip: 192.0.212.1X # Your VM01 IP Address
     ~~~
 
 - Add host aliases via rancher UI
