@@ -72,18 +72,21 @@ $ k logs -f $(kubectl get pods -l app=rancher -o name)
 - Cluster > rke > System > Resources > Workloads
 
 
-- Add hostAliases to rancher agent
+- Add hostAliases to rancher agent via YAML
   - Cluster > rke > System > Resources > Workloads > cattle-cluster-agent > View / Edit YAML
 
     ~~~ 
-    # Add below after dnsPolicy line
+    # Add below after dnsPolicy line 263
 
        dnsPolicy: ClusterFirst
        hostAliases:
        - hostnames:
          - rancher.vm01
-         ip: 192.0.212.1
+         ip: 192.0.212.1 # Your VM01 IP Address
     ~~~
+
+- Add host aliases via rancher UI
+- cattle-cluster-ageent > Edit > Networking > Host Aliases > IP Address > 192.0.212.1X > Hostname > rancher.vm01 > Save
 
 ---
 **Option 4-1) Install RKE from rke binary**
