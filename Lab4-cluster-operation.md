@@ -21,7 +21,7 @@
 - Select Cluster > rke > Observability Project
 - Apps --> Launch --> Search "efk" > Config Pod AntiAffinity Type "soft", Enable Filebit, Enable Metricbit "false"
 - Launch
-- Connect kibana  : Select App > ekf > /index.html
+- Connect kibana  : Select App > efk > /index.html
 
 - Select Cluster rke > Tools > Logging > ElasticSearch
 - Endpoint "http://elasticsearch-master.efk:9200" > Save
