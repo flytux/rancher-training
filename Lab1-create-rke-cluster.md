@@ -114,7 +114,7 @@ $ kubectl cluster-info
 **@ vm01**
 
 - zsh 환경에서는 k, kcg, kc, kn 등의 alias가 설정되어 있습니다.
-- zsh 환경에서 nginx 워크로드를 배포하고, 구동 상태를 확인
+- zsh 환경에서 nginx 워크로드를 배포하고, 구동 상태를 확인합니다.
 
 ~~~
 $ zsh
