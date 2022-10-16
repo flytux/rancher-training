@@ -82,14 +82,17 @@ $ k8sadm@vm01:~/rancher-training> rke config -n config/cluster.yml
 - rke up --config config/cluster.yml 로 클러스터를 생성합니다.
 - 네트워크 상태 등에 따라 3~5분 정도 소요됩니다.
 
+~~~
 $ k8sadm@vm01:~/rancher-training> rke up --config config/cluster.yml 
+~~~
 
 - INFO[0152] Finished building Kubernetes cluster successfully 와 같이 출력 후 종료되면 정상입니다.
 - 종료 후 생성된 클러스터 접속을 위한 config 파일 디렉토리를 생성하고 config 파일을 복사합니다.
 
+~~~
 $ mkdir ~/.kube
 $ cp config/kube_config_cluster.yml ~/.kube/config
-
+~~~
 
 #### 2. Check Cluster
 
