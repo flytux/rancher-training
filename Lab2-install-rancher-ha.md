@@ -39,7 +39,7 @@ $ k rollout status deploy
 
 - 랜처 파드의 로그를 조회합니다.
 - 브라우저를 이용해서 랜처 UI에 접속합니다.
-- 기본 패스워드는 password 
+- 기본 패스워드는 password 로 설정되어 있습니다.
 
 ~~~
 $ k logs -f $(kubectl get pods -l app=rancher -o name)
