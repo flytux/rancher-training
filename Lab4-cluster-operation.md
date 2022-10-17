@@ -1,19 +1,30 @@
 ### Lab4. Cluster Operation - Backup / Logging / Monitoring
 
-&nbsp;
+
+**0) Install local-path storage class
+
+- local-path storage class를 설치합니다.
+- local-path storage 를 기본 스토리지 클래스로 설정합니다.
+
+
+~~~
+k8sadm@vm01: k apply -f charts/local-path/local-path-storage.yaml
+~~~
+
+- Cluster local > Storage > StorageClasses > local-path를 찾아 오른쪽 "..." 메뉴를 클릭하여 Set As Default 선택
+ 
 
 **1) Cluster Backup**
 
-- Cluster rke > Default > Apps > Launch > Search phpbb > set phpBB password > Launch
-- Login phpbb with service link in App panel (ex. 30888/tcp)
-- Cluster rke > Tools > snapshots > Snapshot Now
+- Rancher에서 클러스터 local을 선택한 후, Apps > Rancher Backups 를 설치합니다.
 
-- Delete Apps > phpbb
+- Menu > Cluster > local > Apps > Filter "backup" > Rancher Backups
+- Install > Install into Project > System > Next
+- Default Storage Location > Use Existing Storage Class > local-path, 2Gi > Install
 
-- Cluster rke > Tools > snapshots > Restore snapshot
-- Cluster rke > Default > Resources > Workloads
+- 설치가 완료된 후 좌측에 Rancher Backups 메뉴가 생성됩니다.
 
-&nbsp;
+- Backup > Create > Name "init-backup" > 기본 설정으로 "Create" 
 
 **2) Application Logging**
 
