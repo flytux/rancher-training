@@ -3,7 +3,6 @@
 #### 0. Pre-work
 
 **@ local machine**
-- 첨부된 ssh-key.tar 파일을 local 홈 폴더에 저장 후 압축을 해제합니다.
 - hosts 파일에 vm01 / vm02 IP와 도메인 이름을 추가합니다.
 - 예) 윈도우즈의 경우 관리자 권한으로 C:/windows/System32/etc/drivers/hosts 파일 편집
 
@@ -13,19 +12,18 @@
 ~~~
 
 - vm01 에 k8sadm 사용자로 접속합니다.(ssh k8sadm@vm01)
-- 첨부된 ssk-key.tar 파일을 vm01 k8sadm 사용자 홈에 복사합니다.
+- k8sadm ssh key를 vm01, vm02에 등록합니다. (ssh-copy-id, 패스워드 입력)
 - 트레이닝 레파지토리를 클론하고, 필요한 실행파일을 vm01 /usr/local/bin에 복사합니다.
 - kubectl 사용을 지원하기 위한 쉘 환경을 설정합니다. (zsh)
 
 
 ~~~
 $ ssh k8adm@vm01
-$ exit
+$ ssh-copy-id k8sadm@vm01
+$ ssh-copy-id k8sadm@vm02
 
-$ scp ssh-key.tar k8sadm@vm01:/home/k8sadm
-
-$ ssh k8sadm@vm01
-$ tar xvf ssh-key.tar 
+$ ssh vm01
+$ ssh vm02
 
 $ git clone https://github.com/flytux/rancher-training
 
