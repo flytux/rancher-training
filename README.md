@@ -3,7 +3,7 @@
 
 ### Lab 1. [Create RKE cluster](Lab1-create-rke-cluster.md)
 ### Lab 2. [Install Rancher](Lab2-install-rancher-ha.md)
-### Lab 3. [Create RKE cluster](Lab3-create-rke-cluster.md)
+### Lab 3. [Add RKE cluster worker node](Lab3-add-rke-cluster-node.md)
 ### Lab 4. [Cluster Operation - Backup, Logging, Monitoring](Lab4-cluster-operation.md)
 ### Lab 5. [User Management with openLDAP](Lab5-user-management-openldap.md)
 ### Lab 6. [Enable Service Mesh with Istio](Lab6-service-mesh-with-istio.md)
