@@ -93,7 +93,7 @@ noProxy: 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local
 rancherImage: rancher/rancher
 # rancher/rancher image tag. https://hub.docker.com/r/rancher/rancher/tags/
 # Defaults to .Chart.appVersion
-rancherImageTag: v2.5.16
+rancherImageTag: v2.6.5 #v2.5.16
 
 # Override imagePullPolicy for rancher server images
 # options: Always, Never, IfNotPresent
