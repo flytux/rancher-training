@@ -19,32 +19,17 @@ $ kc local
 $ k get pods -A
 $ kc vm02
 $ k get pods -A
+
+$ kubectl create deployment nginx --image nginx --port 80
+$ kubectl expose deployment nginx
+$ kubectl get svc
+$ kubectl get pods
+$ kubectl exec -it $(kubectl get pods -l app=nginx -o name) -- bash
+$ curl -v nginx
+
 ~~~
 
 **2) 클러스터 백업 및 복구
-
-- 
-~~~
-$ kcg # vm02 클러스터 접속 확인
-$ k apply -f charts/local-path/local-path-storage.yaml
-
-- Rancher > vm02 > Storage > StorageClasses
-- local-path > ... > Set As Default
-~~~
-
-- phpbb 샘플 앱을 설치합니다.
-
-~~~
-- Apps > Repositories > Create
-- Name: "bitnami", URL: https://charts.bitnami.com/bitnami > Create
-
-- Charts > Filter "php" > phpbb 선택 > Install
-- Namespace: default > Name: "phpbb" > Install
-- 181 라인  type: NodePort로 변경 > Install
-- Workload, Storage > PVC, Service 확인
-~~~
-
-- 설치 완료 된 후 Services > phpbb 노드 포트 링크 클릭하여 접속 확인
 
 - 클러스터 백업을 수행합니다.
 
@@ -52,10 +37,10 @@ $ k apply -f charts/local-path/local-path-storage.yaml
 - Menu > Cluster Management > vm02 > "..." > Take Snapshot
 ~~~
 
-- 설치한 phpbb를 삭제합니다.
+- 설치한 nginx를 삭제합니다.
 
 ~~~
-- Cluster > Apps > Installed Apps > Delete
+- Cluster > Workloads > nginx > Delete
 ~~~
 
 - 클러스터 복구를 수행합니다.
@@ -63,7 +48,7 @@ $ k apply -f charts/local-path/local-path-storage.yaml
 ~~~
 - Menu > Cluster Management > vm02 > "..." > Restore Snapshot
 - 최근 스냅샷 선택 > only etcd 선택 > 복구
-- Cluster vm02 > Workloas > phpbb 확인
+- Cluster vm02 > Workloas > nginx 확인
 ~~~
 
 
