@@ -4,6 +4,7 @@
 > 
 > SSH 키 등록과 도커 런타임이 설치되어야 합니다.
 
+&nbsp;
 
 **1) Rancher 접속 https://rancher.vm01**
 
@@ -12,6 +13,8 @@
 - Cluster Name > "vm02" > Next
 - etcd, control plane, worker 선택
 - 아래 생성된 스크립트 복사
+
+&nbsp;
 
 **2) Rancher 설치 명령 실행**
 
