@@ -1,4 +1,4 @@
-### Lab 6. Istio를 이용한 서비스 메쉬 설정
+### Lab 6. Service Mesh with Istio
 
 &nbsp;
 
