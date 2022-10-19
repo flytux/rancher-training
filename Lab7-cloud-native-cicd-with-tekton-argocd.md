@@ -152,7 +152,8 @@ $ k apply -f charts/tekton/argo-app-kw-mvn.yml
 
 - $ vi charts/tekton/argo-token.sh 
 - ARGOCD_AUTH_TOKEN 값을 생성한 토큰으로 변경 후 저장
-- $ charts/tekton/argo-token.sh 로 시크릿 생
+- $ charts/tekton/argo-token.sh 로 시크릿 생성
+
 
 &nbsp;
 
