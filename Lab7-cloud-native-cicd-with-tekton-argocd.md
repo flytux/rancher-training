@@ -32,7 +32,7 @@ $ k apply -f charts/gitea/deploy-gitea.yml
 - 도커 레지스트리를 설치합니다.
 
 ~~~
-$ # Add in cluster dns name to coredns
+$ # coredns에 클러스터에서 참조할 dns를 추가합니다.
 $ k edit cm coredns -n kube-system
 $ # Add below
     health {
@@ -91,7 +91,7 @@ $ kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previ
 
 &nbsp;
 
-**2) Install Pipeline**
+**2) 빌드 파이프라인 어플리케이션 빌드를 위한 태스크와 파이프라인을 설치합니다.**
 
 ~~~
 $ k create ns build
@@ -100,31 +100,35 @@ $ k apply -f charts/tekton/pipeline
 $ tkn t ls
 $ tkn p ls
 ~~~
-- Add Project "APPS" in Rancher
-- Move build namespace to "APPS" project
+
+- 랜처에서 "APPS" 프로젝트를 추가합니다.
+- 네임스페이스 build를 "APPS" 프로젝트로 이동합니다.
 
 &nbsp;
 
-**3) Install ArgoCD**
+**3) ArgoCD를 helm chart를 이용하여 설치합니다. **
 ~~~
 $ kubectl create namespace argocd
 $ kubectl apply -n argocd -f charts/argocd/
-$ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d # Get admin password
+
+#  관리자 초기 패스워드 확인
+$ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ~~~
 
 &nbsp;
 
-**4) ArgoCD login and create App**
+**4) ArgoCD 로그인 및 Argo App 생성**
 
-- Cluster rke > Namespaces > Select argocd > Move to DEVOPS Project
-- Cluster rke > System > Resources > Workloads > nginx-ingress-controller > ... > Edit
-- Show Advanced options > Command > Command > Add "--enable-ssl-passthrough" to the end of arguments > Save
+- Cluster vm02 > Namespaces > argocd > DEVOPS Project로 이동
+- Cluster vm02 > Workloads > Only System Namespaces > Filter "nginx" > nginx-ingress-controller > ... > Edit 
+- Command > Arguments > "--enable-ssl-passthrough"를 마지막에 추가 후 저장
+- nginx 컨트롤러가 재기동 되어야 ingress를 통한 접속이 가능합니다.
 
-- Login argoCD : https://argocd.vm02
+- 웹 브라우저에서 ArgoCD 접속 : https://argocd.vm02
 - ID : admin
-- Password : # Get admin password
+- Password : 앞에서 확인한 관리자 패스워드
 
-Option1)
+- ArgoCD App 생성
 
 **@vm01**
 
@@ -132,38 +136,27 @@ Option1)
 $ k apply -f charts/tekton/argo-app-kw-mvn.yml
 ~~~
 
-Option2)
-
-- Manage > Reposotories > Connect Repo Using HTTPS > Project : default 
-- Repository URL : http://gitea.gitea:3000/tekton/kw-mvn-deploy.git
-- Username: tekton, Password: 12345678 > Connect
-- ... > Create Application > Application Name : kw-mvn-deploy > Project Name : default
-- Revison > main > Path : .
-- Cluster URL : https://kubernetes.default.svc
-- Namespace : deploy
-- Directory Recurse : Check > Create
-- Sync > Auto-create Namespace : Check
-
 &nbsp;
 
-**5) Create argocd-token**
-- Rancher > Cluster rke > DEVOPS > Resource > Config > argocd-cm > Edit 
-- add data >
+**5) 파이프라인에서 사용할 argocd-token 생성**
+- Cluster vm02 > Storage > ConfigMap > argocd-cm > Edit 
+- data에 아래 키/밸류 추가 
   Key: accounts.admin Value: apiKey, login
 - Save
 
-- Login argocd : https://argocd.vm02
-- Manage > Account > admin > Tokens > Generate New
-- Copy New Token:
+- ArgoCD 로그인 : https://argocd.vm02
+- Manage > Account > admin > Tokens > Generate New 로 어플리케이션 토큰 생성
+- Token 복사
 
-- Login vm01
-- $ vi charts/tekton/argo-token.sh
-- Replace ARGOCD_AUTH_TOKEN value with New Token value and wq
-- $ charts/tekton/argo-token.sh
+- vm01 로그인
+
+- $ vi charts/tekton/argo-token.sh 
+- ARGOCD_AUTH_TOKEN 값을 생성한 토큰으로 변경 후 저장
+- $ charts/tekton/argo-token.sh 로 시크릿 생
 
 &nbsp;
 
-**6) Run Pipeline**
+**6) Pipeline 실행**
 ~~~
 $ kcg
 $ kc rke
@@ -171,27 +164,31 @@ $ kn build
 $ k create -f charts/tekton/pipeline/pr-kw-build.yml
 $ tkn pr logs -f 
 ~~~
+- Tekton 대시보드 접속
 - http://tekton.vm02/#/namespaces/build/pipelineruns
 
 &nbsp;
 
+- 배포된 어플리케이션 접속
 - Check application : http://vm02:30088/ 
   
-**7) Add Webhook to Gitea Repo**
+**7) Gitea Repo에 웹훅 추가**
+
 - http://gitea.vm02/tekton/kw-mvn
+
 - Settings > Webhooks > Add Webhook > Gitea
 - Target URL : http://el-build-listener.build:8080
 - Add Webhook
-- Click Webhook > Test Delivery
-- Check Pipeline Runs
+- Webhook > Test Delivery 선택
+- Pipeline Runs 구동 상태 확인
 
 &nbsp;
 
-**8) Git push source repo will trigger tekton pipeline**
+**8) Git 레파지토리에 소스 push 후 파이프라인 자동 기동 확인**
 - Edit source and commit
-- Check Pipeline Runs
-- Check argocd app deployment status
-- Check application : http://vm02:30088/ 
+- Pipeline 구동 확인
+- ArgoCD에서 앱 배포 상태 확인
+- 어플리케이션 접속 후 배 : http://vm02:30088/ 
 
 &nbsp;
 
