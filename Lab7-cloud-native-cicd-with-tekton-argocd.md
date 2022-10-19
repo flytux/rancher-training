@@ -160,7 +160,7 @@ $ k apply -f charts/tekton/argo-app-kw-mvn.yml
 **6) Pipeline 실행**
 ~~~
 $ kcg
-$ kc rke
+$ kc vm02
 $ kn build
 $ k create -f charts/tekton/pipeline/pr-kw-build.yml
 $ tkn pr logs -f 
