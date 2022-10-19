@@ -1,4 +1,4 @@
-### Lab 7. Cloud Native CI/CD with tekton and argocd
+### Lab 7. Cloud Native CI/CD with Tekton and ArgoCD
 
 > Tekton을 이용하여 Build 파이프라인을 구성합니다.
 > 
