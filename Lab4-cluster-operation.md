@@ -1,5 +1,6 @@
-### Lab4. Cluster Operation - Backup / Logging / Monitoring
+### Lab4. Cluster Operation - Backup / Monitoring
 
+&nbsp;
 
 **1) 멀티 클러스터 컨텍스트 설정**
 
@@ -28,6 +29,7 @@ $ kubectl exec -it $(kubectl get pods -l app=nginx -o name) -- bash
 $ curl -v nginx
 
 ~~~
+&nbsp;
 
 **2) 클러스터 백업 및 복구**
 
@@ -51,26 +53,38 @@ $ curl -v nginx
 - Cluster vm02 > Workloas > nginx 확인
 ~~~
 
+&nbsp;
 
-**2) Application Logging**
+**2-1) 랜처를 통해 설치한 클러스터가 아닌 경우 (RKE imported)**
 
-- Cluster > rke > Add Project > Observability
-- Select Cluster > rke > Observability Project
-- Apps --> Launch --> Search "efk" > Config Pod AntiAffinity Type "soft", Enable Filebit, Enable Metricbit "false"
-- Launch
-- Connect kibana  : Select App > efk > /index.html
+- RKE 클러스터는 rke 명령어를 이용하여 ETCD 스냅삿 백업 / 복구가 가능합니다.
+- RKE 클러스터 설치 시 생성된 cluster.yml, cluster.rkestate 화일이 있는 폴더에서 실행합니다.
 
-- Select Cluster rke > Tools > Logging > ElasticSearch
-- Endpoint "http://elasticsearch-master.efk:9200" > Save
+~~~
+$ rke etcd snapshot-save 
 
-- Connect kibana
-- Create index pattern > rke* > Next step > Time filter @timestamp > Create Index Pattern
-- Select Discover (Compass Icon)
+INFO[0007] Finished saving/uploading snapshot [rke_etcd_snapshot_2022-10-19T01:41:16Z] on all etcd hosts
+~~~
+
+- 정상 종료 시 위와 같은 메시지가 출력됩니다.
+- 백업 파일은 마스터 노드 vm의 /opt/rke/etcd-snapshots 폴더에 %스냅샷이름%.zip 파일 명으로 저장됩니다.
+- ex) rke_etcd_snapshot_2022-10-19T01:41:16Z.zip
+
+- rke etcd snapshot-restore %스냅샷이름% 로 해당 백업본을 복구합니다.
+
+~~~
+$ rke etcd snapshot-restore --name rke_etcd_snapshot_2022-10-19T01:41:16Z
+
+INFO[0082] Finished restoring snapshot [rke_etcd_snapshot_2022-10-19T01:41:16Z] on all etcd hosts
+~~~
+- etcd snapshot 복구 시에는 클러스터 서비스가 순차적으로 재기동 되므로 일시적인 클러스터 서비스 중단이 필요합니다.
 
 &nbsp;
 
-**3) Enable monitoring**
+**3) 클러스터 모니터링 설치**
 
-- Tools > Monitoring > Enable
-- Cluster rke > System > Resources > Workloads
+- 랜처에서 클러스터 모니터링 앱을 이용하여 프로메테우스 / 그라파나 모니터링 환경을 설치합니다.
+- Cluster > vm02 > Apps > Monitoring > Install > Install into project "System" > Next > Install
+- Cluster > vm02 > Monitoring > 메뉴를 통해서 그라파나와 프로메네우스 접속이 가능합니다.
+
 
