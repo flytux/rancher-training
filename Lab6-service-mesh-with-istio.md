@@ -1,10 +1,9 @@
-### Lab 6. Enable Service Mesh with Istio
+### Lab 6. Istio를 이용한 서비스 메쉬 설정
 
-**1) Enable Istio from Rancher**
-- Cluster > rke > Tools > Istio
-- Group Access > Select Allow All
-- Ingress Gateway > Enable > True > Enable
-- Cluster > rke > System > Check Istio-System namespace workloads 
+**1) 랜처에서 Istio 서비스를 설치합니다.**
+- Cluster > vm02 > Apps > Istio > Install
+- Into the project "System" > Next > Install
+
 
 **2) Deploy Istio Enabled workloads**
 - Cluster > rke > Observability > Namespace > Add namespace > Name "istio-books" > Enable istio sidecar auto-injection > Create
