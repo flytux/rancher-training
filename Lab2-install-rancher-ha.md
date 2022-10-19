@@ -1,4 +1,4 @@
-### Lab 2. Install Rancher in cluster HA
+### Lab 2. Install Rancher in Cluster
 
 > Rancher HA 구성은 멀티 노드에 3개 이상의 인스턴스를 구성합니다.
 > 
