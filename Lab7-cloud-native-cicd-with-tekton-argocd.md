@@ -1,41 +1,35 @@
 ### Lab 7. Cloud Native CI/CD with tekton and argocd
 
-> Tekton uses kubernetes CRDs - using kubernetes resources - to run CICD pipelines
+> Tekton을 이용하여 Build 파이프라인을 구성합니다.
 > 
-> Light weight / Resource optimized 
-> 
-> Reusable tasks - [Tekton Hub](https://hub.tekton.dev/)
+> Tekton은 가볍고 쿠버네티스와 완벽하게 호환되며, 어느 클러스터나 쉽게 구성이 가능합니다.
+> 쿠버네티스 CRD로 구성되어 쿠버네티스의 장점을 모두 이용할 수 있고,
+> Tekton Hub를 통해 다양한 Task를 이용할 수 있습니다. [Tekton Hub](https://hub.tekton.dev/)
 
 &nbsp;
 
-**0) Install Gitea, Docker Registry**
+**0) Gitea, Docker Registry 설치**
 
-- Login k8sadm@vm01
+- k8sadm@vm01로 로그인하여 vm02 클러스터로 설정합니다.
 
 **@vm01**
 
 ~~~
-$ kc rke
+$ kc vm02
 $ kcg
-
-# install storage-class, set default
-$ k apply -f charts/local-path/local-path-storage.yaml
-$ k get sc
-$ kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
 $ k apply -f charts/gitea/deploy-gitea.yml
 ~~~
 
-- http://gitea.vm02
-- Set Gitea Base URL : http://gitea.gitea:3000
-- Install Gitea
-- Register User ID : tekton, Password: 12345678
-- New migration > Git > https://github.com/flytux/kw-mvn.git
-- New migration > Git > https://github.com/flytux/kw-mvn-deploy.git
+- 웹브라우저로 설정 화면을 접속합니다 : http://gitea.vm02
+- Gitea Base URL : http://gitea.gitea:3000 로 설정하고 설치합니다.
+- 웹 브라우저로 재 접속하여,
+- User를 등록합니다 > ID: tekton, Password: 12345678
+- 소스 레파지토리를 복제합니다. New migration > Git > https://github.com/flytux/kw-mvn.git
+- 배포 레파지토리를 복제합니다. New migration > Git > https://github.com/flytux/kw-mvn-deploy.git
 
-- Install Docker Registry & Docker In-secure Setttings
-
-**@vm01**
+- 클러스터 DNS 서버에 vm02 호스트 주소를 등록하고,
+- 도커 레지스트리를 설치합니다.
 
 ~~~
 $ # Add in cluster dns name to coredns
@@ -49,15 +43,17 @@ $ # Add below
         192.0.212.2 vm02 # Update YOUR vm02 IP
         fallthrough
      }
-$ :wq
-~~~
-~~~
+
 $ helm install docker-registry -f charts/docker-registry/values.yaml charts/docker-registry -n registry --create-namespace
 $ curl -v vm02:30005/v2/_catalog
 
 ~~~
 
 **@vm02**
+
+- vm02 호스트의 도커 데몬에 tls 비활성화 설정을 적용하고, 도커 데몬을 재기동 합니다.
+- vm02 클러스터가 도커 데몬에서 구동되므로, 재기동 시까지 시간이 잠시 소요됩니다.
+- 도커 레지스트리에 접속 테스트를 수행합니다.
 
 ~~~
 $ sudo vi /etc/docker/daemon.json
@@ -71,13 +67,14 @@ $ sudo systemctl restart docker
 $ sudo docker login vm02:30005
 # ID / Password > tekton / 1 
 ~~~
-- Add Project "DEVOPS" in Rancher
+
+- 랜처에서 "DEVOPS" 프로젝트를 생성합니다.
 
 &nbsp;
 
-**1) Install Tekton, Dashboard, Triggers**
+**1) Tekton Pipelines, Dashboard, Triggers 설치**
 
-**@vm01**
+**k8sadm@vm01**
 
 ~~~
 $ kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.29.1/release.yaml
@@ -85,11 +82,12 @@ $ k apply -f charts/tekton/tekton-dashboard-release.yaml
 $ kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previous/v0.17.1/release.yaml
 $ kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previous/v0.17.1/interceptors.yaml
 ~~~
+
 - http://tekton.vm02
 
 - http://rancher.vm01
 
-- Move gitea, registry, tekton-pipelines namespace to "DEVOPS" project
+- 네임스페이스 gitea, registry, tekton-pipelines 를 "DEVOPS" project로 이동합니다.
 
 &nbsp;
 
