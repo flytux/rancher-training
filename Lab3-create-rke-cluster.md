@@ -13,9 +13,10 @@
 - etcd, control plane, worker 선택
 - 아래 생성된 스크립트 복사
 
-**2) Rancher 설치 명령 실행
+**2) Rancher 설치 명령 실행**
 
 - k8sadm 사용자로 vm02 로그인 : k8sadm@vm02
 - 복사한 스크립트 실행
 - Cluster Manager > vm02 > Provisioning Log 로 진행상태 조회
+
 
