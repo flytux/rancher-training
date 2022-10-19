@@ -39,7 +39,7 @@ $ helm install openldap -f charts/openldap/values.yaml charts/openldap -n openld
 
 **3) Rancher 외부인증 설정** 
 
-- https://rancher.vm01/g/security/authentication/openldap
+- 메뉴 > Users & Authentication > Auth Provider > OpenLDAP 선택
 
 - Hostname or IP address > VM02 내부 IP (ex. 192.0.212.01)
 - Port : 30389
@@ -49,7 +49,7 @@ $ helm install openldap -f charts/openldap/values.yaml charts/openldap -n openld
 - Group Search Base : ou=groups,dc=sso,dc=kubeworks,dc=net
 
 - LDAP에 생성한 사용자 명과 패스워드를 입력합니다.
-- "Authenticate with OpenLDAP"로 인증 테스트
+- "Enable"로 인증 설정 적용
 
 &nbsp;
 
