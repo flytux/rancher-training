@@ -1,4 +1,40 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "7.5.11"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "singlestat",
+      "name": "Singlestat",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -16,8 +52,8 @@
   "editable": true,
   "gnetId": 6756,
   "graphTooltip": 0,
-  "id": 21,
-  "iteration": 1664804706978,
+  "id": null,
+  "iteration": 1666155592527,
   "links": [],
   "panels": [
     {
@@ -43,14 +79,12 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "decimals": 1,
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "s",
@@ -102,9 +136,10 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "process_uptime_seconds{endpoint=\"http-port\", instance=\"10.42.0.221:8080\", job=\"kw-mvn\", namespace=\"deploy\", pod=\"kw-mvn-7fdb7dd4dd-wph7c\", service=\"kw-mvn\"}",
+      "tableColumn": "",
       "targets": [
         {
+          "exemplar": true,
           "expr": "process_uptime_seconds{service=\"$service\", instance=\"$instance\"}",
           "format": "time_series",
           "interval": "",
@@ -137,14 +172,12 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "decimals": 1,
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "percent",
@@ -198,8 +231,10 @@
       "tableColumn": "",
       "targets": [
         {
+          "exemplar": true,
           "expr": "sum(jvm_memory_used_bytes{service=\"$service\", instance=\"$instance\", area=\"heap\"})*100/sum(jvm_memory_max_bytes{service=\"$service\",instance=\"$instance\", area=\"heap\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A",
@@ -228,14 +263,12 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "decimals": 1,
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "percent",
@@ -325,11 +358,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -355,8 +386,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -430,14 +464,12 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "decimals": null,
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "dateTimeAsIso",
@@ -489,7 +521,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "{endpoint=\"http-port\", instance=\"10.42.0.221:8080\", job=\"kw-mvn\", namespace=\"deploy\", pod=\"kw-mvn-7fdb7dd4dd-wph7c\", service=\"kw-mvn\"}",
+      "tableColumn": "",
       "targets": [
         {
           "expr": "process_start_time_seconds{service=\"$service\", instance=\"$instance\"}*1000",
@@ -520,11 +552,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -551,8 +581,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -622,11 +655,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -653,8 +684,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -738,11 +772,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -769,20 +801,16 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "repeat": "memory_pool_heap",
       "repeatDirection": "h",
-      "scopedVars": {
-        "memory_pool_heap": {
-          "selected": false,
-          "text": "Eden Space",
-          "value": "Eden Space"
-        }
-      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -856,251 +884,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 15
-      },
-      "hiddenSeries": false,
-      "id": 97,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.5",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1664804706978,
-      "repeatPanelId": 85,
-      "scopedVars": {
-        "memory_pool_heap": {
-          "selected": false,
-          "text": "Survivor Space",
-          "value": "Survivor Space"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "jvm_memory_used_bytes{instance=\"$instance\", service=\"$service\", id=\"$memory_pool_heap\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Used",
-          "refId": "C"
-        },
-        {
-          "expr": "jvm_memory_committed_bytes{instance=\"$instance\", service=\"$service\", id=\"$memory_pool_heap\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Commited",
-          "refId": "A"
-        },
-        {
-          "expr": "jvm_memory_max_bytes{instance=\"$instance\", service=\"$service\", id=\"$memory_pool_heap\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Max",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "$memory_pool_heap (heap)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "bytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "RANCHER_MONITORING",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 15
-      },
-      "hiddenSeries": false,
-      "id": 98,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.5",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1664804706978,
-      "repeatPanelId": 85,
-      "scopedVars": {
-        "memory_pool_heap": {
-          "selected": false,
-          "text": "Tenured Gen",
-          "value": "Tenured Gen"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "jvm_memory_used_bytes{instance=\"$instance\", service=\"$service\", id=\"$memory_pool_heap\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Used",
-          "refId": "C"
-        },
-        {
-          "expr": "jvm_memory_committed_bytes{instance=\"$instance\", service=\"$service\", id=\"$memory_pool_heap\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Commited",
-          "refId": "A"
-        },
-        {
-          "expr": "jvm_memory_max_bytes{instance=\"$instance\", service=\"$service\", id=\"$memory_pool_heap\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Max",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "$memory_pool_heap (heap)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "bytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "RANCHER_MONITORING",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -1127,20 +913,16 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "repeat": "memory_pool_nonheap",
       "repeatDirection": "h",
-      "scopedVars": {
-        "memory_pool_nonheap": {
-          "selected": false,
-          "text": "Code Cache",
-          "value": "Code Cache"
-        }
-      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -1214,346 +996,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 23
-      },
-      "hiddenSeries": false,
-      "id": 80,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.5",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "irate(jvm_classes_unloaded_total{instance=\"$instance\", service=\"$service\"}[5m])",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Classes Unloaded",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Classes Unloaded",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "RANCHER_MONITORING",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 31
-      },
-      "hiddenSeries": false,
-      "id": 99,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.5",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1664804706978,
-      "repeatPanelId": 88,
-      "scopedVars": {
-        "memory_pool_nonheap": {
-          "selected": false,
-          "text": "Compressed Class Space",
-          "value": "Compressed Class Space"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "jvm_memory_used_bytes{instance=\"$instance\", service=\"$service\", id=\"$memory_pool_nonheap\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Used",
-          "refId": "C"
-        },
-        {
-          "expr": "jvm_memory_committed_bytes{instance=\"$instance\", service=\"$service\", id=\"$memory_pool_nonheap\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Commited",
-          "refId": "A"
-        },
-        {
-          "expr": "jvm_memory_max_bytes{instance=\"$instance\", service=\"$service\", id=\"$memory_pool_nonheap\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Max",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "$memory_pool_nonheap (non-heap)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "bytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "RANCHER_MONITORING",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 31
-      },
-      "hiddenSeries": false,
-      "id": 100,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.5",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1664804706978,
-      "repeatPanelId": 88,
-      "scopedVars": {
-        "memory_pool_nonheap": {
-          "selected": false,
-          "text": "Metaspace",
-          "value": "Metaspace"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "jvm_memory_used_bytes{instance=\"$instance\", service=\"$service\", id=\"$memory_pool_nonheap\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Used",
-          "refId": "C"
-        },
-        {
-          "expr": "jvm_memory_committed_bytes{instance=\"$instance\", service=\"$service\", id=\"$memory_pool_nonheap\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Commited",
-          "refId": "A"
-        },
-        {
-          "expr": "jvm_memory_max_bytes{instance=\"$instance\", service=\"$service\", id=\"$memory_pool_nonheap\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Max",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "$memory_pool_nonheap (non-heap)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "bytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "decimals": 0,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -1562,7 +1008,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 39
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 50,
@@ -1580,8 +1026,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1645,112 +1094,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 39
-      },
-      "hiddenSeries": false,
-      "id": 83,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.5",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "jvm_buffer_memory_used_bytes{instance=\"$instance\", service=\"$service\", id=\"mapped\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Used Bytes",
-          "refId": "A"
-        },
-        {
-          "expr": "jvm_buffer_total_capacity_bytes{instance=\"$instance\", service=\"$service\", id=\"mapped\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Capacity Bytes",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Mapped Buffers",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "RANCHER_MONITORING",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -1759,10 +1105,10 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 46
+        "y": 31
       },
       "hiddenSeries": false,
-      "id": 78,
+      "id": 80,
       "legend": {
         "avg": false,
         "current": false,
@@ -1776,8 +1122,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1787,25 +1136,18 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(jvm_gc_memory_allocated_bytes_total{instance=\"$instance\", service=\"$service\"}[5m])",
+          "expr": "irate(jvm_classes_unloaded_total{instance=\"$instance\", service=\"$service\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "allocated",
+          "legendFormat": "Classes Unloaded",
           "refId": "A"
-        },
-        {
-          "expr": "irate(jvm_gc_memory_promoted_bytes_total{instance=\"$instance\", service=\"$service\"}[5m])",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "promoted",
-          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Memory Allocate/Promote",
+      "title": "Classes Unloaded",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1821,7 +1163,7 @@
       },
       "yaxes": [
         {
-          "format": "bytes",
+          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -1847,11 +1189,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -1860,7 +1200,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 47
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 82,
@@ -1877,8 +1217,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1948,11 +1291,111 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 39
+      },
+      "hiddenSeries": false,
+      "id": 83,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.11",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "jvm_buffer_memory_used_bytes{instance=\"$instance\", service=\"$service\", id=\"mapped\"}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Used Bytes",
+          "refId": "A"
         },
+        {
+          "expr": "jvm_buffer_total_capacity_bytes{instance=\"$instance\", service=\"$service\", id=\"mapped\"}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Capacity Bytes",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Mapped Buffers",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -1961,7 +1404,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 54
+        "y": 46
       },
       "hiddenSeries": false,
       "id": 68,
@@ -1979,8 +1422,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2053,13 +1499,115 @@
       }
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 46
+      },
+      "hiddenSeries": false,
+      "id": 78,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.11",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(jvm_gc_memory_allocated_bytes_total{instance=\"$instance\", service=\"$service\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "allocated",
+          "refId": "A"
+        },
+        {
+          "expr": "irate(jvm_gc_memory_promoted_bytes_total{instance=\"$instance\", service=\"$service\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "promoted",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Memory Allocate/Promote",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 62
+        "y": 54
       },
       "id": 72,
       "panels": [],
@@ -2071,11 +1619,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -2084,7 +1630,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 63
+        "y": 55
       },
       "hiddenSeries": false,
       "id": 74,
@@ -2104,8 +1650,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2168,11 +1717,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -2181,7 +1728,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 63
+        "y": 55
       },
       "hiddenSeries": false,
       "id": 76,
@@ -2201,8 +1748,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2267,7 +1817,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 73
+        "y": 65
       },
       "id": 34,
       "panels": [],
@@ -2283,11 +1833,9 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "none",
@@ -2302,7 +1850,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 74
+        "y": 66
       },
       "id": 44,
       "interval": null,
@@ -2366,11 +1914,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -2379,7 +1925,7 @@
         "h": 8,
         "w": 20,
         "x": 4,
-        "y": 74
+        "y": 66
       },
       "hiddenSeries": false,
       "id": 36,
@@ -2399,8 +1945,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2481,11 +2030,9 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "none",
@@ -2500,7 +2047,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 78
+        "y": 70
       },
       "id": 46,
       "interval": null,
@@ -2564,11 +2111,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -2577,7 +2122,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 82
+        "y": 74
       },
       "hiddenSeries": false,
       "id": 38,
@@ -2594,8 +2139,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2658,11 +2206,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -2671,7 +2217,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 82
+        "y": 74
       },
       "hiddenSeries": false,
       "id": 42,
@@ -2688,8 +2234,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2752,11 +2301,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -2765,7 +2312,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 82
+        "y": 74
       },
       "hiddenSeries": false,
       "id": 40,
@@ -2782,8 +2329,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2848,7 +2398,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 88
+        "y": 80
       },
       "id": 18,
       "panels": [],
@@ -2860,11 +2410,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -2873,7 +2421,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 89
+        "y": 81
       },
       "hiddenSeries": false,
       "id": 4,
@@ -2892,8 +2440,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2957,20 +2508,20 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 96
+        "y": 88
       },
+      "hiddenSeries": false,
       "id": 2,
       "legend": {
         "alignAsTable": true,
@@ -2987,8 +2538,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3007,6 +2561,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Response Time",
       "tooltip": {
@@ -3052,7 +2607,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 103
+        "y": 95
       },
       "id": 22,
       "panels": [],
@@ -3068,11 +2623,9 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "locale",
@@ -3087,7 +2640,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 104
+        "y": 96
       },
       "id": 28,
       "interval": null,
@@ -3151,21 +2704,21 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "decimals": 0,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 9,
         "x": 4,
-        "y": 104
+        "y": 96
       },
+      "hiddenSeries": false,
       "id": 24,
       "legend": {
         "alignAsTable": true,
@@ -3181,8 +2734,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3201,6 +2757,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Active Sessions",
       "tooltip": {
@@ -3246,20 +2803,20 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 11,
         "x": 13,
-        "y": 104
+        "y": 96
       },
+      "hiddenSeries": false,
       "id": 26,
       "legend": {
         "alignAsTable": true,
@@ -3275,8 +2832,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3302,6 +2862,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Sent & Recieved Bytes",
       "tooltip": {
@@ -3349,11 +2910,9 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "locale",
@@ -3368,7 +2927,7 @@
         "h": 3,
         "w": 4,
         "x": 0,
-        "y": 108
+        "y": 100
       },
       "id": 32,
       "interval": null,
@@ -3432,20 +2991,20 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 13,
         "x": 0,
-        "y": 111
+        "y": 103
       },
+      "hiddenSeries": false,
       "id": 30,
       "legend": {
         "alignAsTable": true,
@@ -3461,8 +3020,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3488,6 +3050,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Threads",
       "tooltip": {
@@ -3533,7 +3096,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 118
+        "y": 110
       },
       "id": 8,
       "panels": [],
@@ -3545,20 +3108,20 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 119
+        "y": 111
       },
+      "hiddenSeries": false,
       "id": 6,
       "legend": {
         "alignAsTable": true,
@@ -3574,8 +3137,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3596,6 +3162,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "INFO logs",
       "tooltip": {
@@ -3639,20 +3206,20 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 119
+        "y": 111
       },
+      "hiddenSeries": false,
       "id": 10,
       "legend": {
         "alignAsTable": true,
@@ -3668,8 +3235,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3690,6 +3260,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "ERROR logs",
       "tooltip": {
@@ -3733,20 +3304,20 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 126
+        "y": 118
       },
+      "hiddenSeries": false,
       "id": 14,
       "legend": {
         "alignAsTable": true,
@@ -3762,8 +3333,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3784,6 +3358,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "WARN logs",
       "tooltip": {
@@ -3827,20 +3402,20 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 126
+        "y": 118
       },
+      "hiddenSeries": false,
       "id": 16,
       "legend": {
         "alignAsTable": true,
@@ -3856,8 +3431,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3878,6 +3456,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "DEBUG logs",
       "tooltip": {
@@ -3921,20 +3500,20 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "RANCHER_MONITORING",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 126
+        "y": 118
       },
+      "hiddenSeries": false,
       "id": 20,
       "legend": {
         "alignAsTable": true,
@@ -3950,8 +3529,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3972,6 +3554,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "TRACE logs",
       "tooltip": {
@@ -4012,27 +3595,28 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 26,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "10.42.0.221:8080",
-          "value": "10.42.0.221:8080"
-        },
-        "datasource": "RANCHER_MONITORING",
+        "current": {},
+        "datasource": "${DS_PROMETHEUS}",
         "definition": "label_values(jvm_classes_unloaded_classes_total, instance)",
+        "description": null,
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Instance",
         "multi": false,
         "name": "instance",
         "options": [],
-        "query": "label_values(jvm_classes_unloaded_classes_total, instance)",
+        "query": {
+          "query": "label_values(jvm_classes_unloaded_classes_total, instance)",
+          "refId": "StandardVariableQuery"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -4045,20 +3629,21 @@
       },
       {
         "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "kw-mvn",
-          "value": "kw-mvn"
-        },
-        "datasource": "RANCHER_MONITORING",
+        "current": {},
+        "datasource": "${DS_PROMETHEUS}",
         "definition": "label_values(jvm_classes_unloaded_classes_total{instance=\"$instance\"}, service)",
+        "description": null,
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Service",
         "multi": false,
         "name": "service",
         "options": [],
-        "query": "label_values(jvm_classes_unloaded_classes_total{instance=\"$instance\"}, service)",
+        "query": {
+          "query": "label_values(jvm_classes_unloaded_classes_total{instance=\"$instance\"}, service)",
+          "refId": "StandardVariableQuery"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -4071,21 +3656,21 @@
       },
       {
         "allValue": null,
-        "current": {
-          "isNone": true,
-          "selected": false,
-          "text": "None",
-          "value": ""
-        },
-        "datasource": "RANCHER_MONITORING",
-        "definition": "",
+        "current": {},
+        "datasource": "${DS_PROMETHEUS}",
+        "definition": "label_values(hikaricp_connections{instance=\"$instance\", service=\"$service\"}, pool)",
+        "description": null,
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "HikariCP-Pool",
         "multi": false,
         "name": "hikaricp",
         "options": [],
-        "query": "label_values(hikaricp_connections{instance=\"$instance\", service=\"$service\"}, pool)",
+        "query": {
+          "query": "label_values(hikaricp_connections{instance=\"$instance\", service=\"$service\"}, pool)",
+          "refId": "StandardVariableQuery"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -4098,20 +3683,21 @@
       },
       {
         "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": "RANCHER_MONITORING",
-        "definition": "",
+        "current": {},
+        "datasource": "${DS_PROMETHEUS}",
+        "definition": "label_values(jvm_memory_used_bytes{service=\"$service\", instance=\"$instance\", area=\"heap\"},id)",
+        "description": null,
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Memory Pool (heap)",
         "multi": false,
         "name": "memory_pool_heap",
         "options": [],
-        "query": "label_values(jvm_memory_used_bytes{service=\"$service\", instance=\"$instance\", area=\"heap\"},id)",
+        "query": {
+          "query": "label_values(jvm_memory_used_bytes{service=\"$service\", instance=\"$instance\", area=\"heap\"},id)",
+          "refId": "StandardVariableQuery"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -4124,20 +3710,21 @@
       },
       {
         "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": "RANCHER_MONITORING",
-        "definition": "",
+        "current": {},
+        "datasource": "${DS_PROMETHEUS}",
+        "definition": "label_values(jvm_memory_used_bytes{service=\"$service\", instance=\"$instance\", area=\"nonheap\"},id)",
+        "description": null,
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Memory Pool (nonheap)",
         "multi": false,
         "name": "memory_pool_nonheap",
         "options": [],
-        "query": "label_values(jvm_memory_used_bytes{service=\"$service\", instance=\"$instance\", area=\"nonheap\"},id)",
+        "query": {
+          "query": "label_values(jvm_memory_used_bytes{service=\"$service\", instance=\"$instance\", area=\"nonheap\"},id)",
+          "refId": "StandardVariableQuery"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -4182,5 +3769,5 @@
   "timezone": "",
   "title": "Spring Boot Statistics",
   "uid": "dAO4Q1V4z",
-  "version": 1
+  "version": 8
 }
