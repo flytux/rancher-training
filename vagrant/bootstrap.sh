@@ -16,9 +16,15 @@ cat >>/etc/hosts<<EOF
 EOF
 
 echo "Install docker"
-zypper in -y docker git wget zsh 
-systemctl enable docker
-systemctl start docker
+
+# common
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+
+# SUSE
+#zypper in -y docker git wget zsh 
+#systemctl enable docker
+#systemctl start docker
 
 echo "Set root password"
 echo -e "1\n1" | passwd root >/dev/null 2>&1
@@ -26,7 +32,7 @@ echo "export TERM=xterm" >> /etc/bash.bashrc
 
 echo "Create User and Key"
 groupadd -g 2000 k8sadm
-useradd -m -u 2000 -g 2000 k8sadm
+useradd -m -u 2000 -g 2000 -s /bin/bash k8sadm
 echo -e "1\n1" | passwd k8sadm >/dev/null 2>&1
 echo ' k8sadm ALL=(ALL)   ALL' >> /etc/sudoers
 
