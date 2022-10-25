@@ -10,7 +10,7 @@
 
 &nbsp;
 
-**0) Gitea, Docker Registry 설치**
+**0) Gitea, Docker Registry를 설치합니다.**
 
 - k8sadm@vm01로 로그인하여 vm02 클러스터로 설정합니다.
 
@@ -74,7 +74,7 @@ $ sudo docker login vm02:30005
 
 &nbsp;
 
-**1) Tekton Pipelines, Dashboard, Triggers 설치**
+**1) Tekton Pipelines, Dashboard, Triggers를 설치합니다.**
 
 **k8sadm@vm01**
 
@@ -187,7 +187,7 @@ $ tkn pr logs -f
 
 &nbsp;
 
-**8) Git 레파지토리에 소스 push 후 파이프라인 자동 기동을 확인**
+**8) Git 레파지토리에 소스 push 후 파이프라인 자동 기동을 확인합니다.**
 - Edit source and commit
 - Pipeline 구동 확인
 - ArgoCD에서 앱 배포 상태 확인
