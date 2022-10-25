@@ -108,7 +108,7 @@ $ tkn p ls
 
 &nbsp;
 
-**3) ArgoCD를 helm chart를 이용하여 설치합니다. **
+**3) ArgoCD를 helm chart를 이용하여 설치합니다.**
 ~~~
 $ kubectl create namespace argocd
 $ kubectl apply -n argocd -f charts/argocd/
@@ -119,7 +119,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 &nbsp;
 
-**4) ArgoCD 로그인 및 Argo App 생성**
+**4) ArgoCD 로그인 및 Argo App을 생성합니다.**
 
 - Cluster vm02 > Namespaces > argocd > DEVOPS Project로 이동
 - Cluster vm02 > Workloads > Only System Namespaces > Filter "nginx" > nginx-ingress-controller > ... > Edit 
@@ -140,7 +140,7 @@ $ k apply -f charts/tekton/argo-app-kw-mvn.yml
 
 &nbsp;
 
-**5) 파이프라인에서 사용할 argocd-token 생성**
+**5) 파이프라인에서 사용할 argocd-token을 생성합니다.**
 - Cluster vm02 > Storage > ConfigMap > argocd-cm > Edit 
 - data에 아래 키/밸류 추가 
   Key: accounts.admin Value: apiKey, login
@@ -159,7 +159,7 @@ $ k apply -f charts/tekton/argo-app-kw-mvn.yml
 
 &nbsp;
 
-**6) Pipeline 실행**
+**6) Pipeline을 실행합니다.**
 ~~~
 $ kcg
 $ kc vm02
@@ -175,7 +175,7 @@ $ tkn pr logs -f
 - 배포된 어플리케이션 접속
 - Check application : http://vm02:30088/ 
   
-**7) Gitea Repo에 웹훅 추가**
+**7) Gitea Repo에 웹훅을 추가합니다.**
 
 - http://gitea.vm02/tekton/kw-mvn
 
@@ -187,7 +187,7 @@ $ tkn pr logs -f
 
 &nbsp;
 
-**8) Git 레파지토리에 소스 push 후 파이프라인 자동 기동 확인**
+**8) Git 레파지토리에 소스 push 후 파이프라인 자동 기동을 확인**
 - Edit source and commit
 - Pipeline 구동 확인
 - ArgoCD에서 앱 배포 상태 확인
