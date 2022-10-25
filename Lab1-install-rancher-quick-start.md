@@ -1,4 +1,4 @@
-### Lab 1. Create K3S Cluster
+### Lab 1. Install Rancher Quick-Start
 
 **0. Pre-work**
 
