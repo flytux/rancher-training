@@ -26,7 +26,7 @@ $ ssh-copy-id vm02
 $ git clone https://github.com/flytux/rancher-training
 
 $ cd rancher-training
-$ sudo cp bins/* /usr/local/bin
+
 ~~~
 
 - zsh environment setting
@@ -35,46 +35,43 @@ $ tar xvf charts/code-server/scripts/dev-shell.tgz -C ~
 $ zsh
 ~~~
 
+- bash environment setting
+~~~
+$ cat config/bashrc-k8s >> ~/.bashrc
+$ source ~/.bashrc
+~~~
 
-**1. Install k3s**
+**1. Install rancher quick-start**
 
 ~~~
-$ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.21.10+k3s1 sh -s - --docker --write-kubeconfig-mode 644
+$ docker run -d --name rancher --privileged -p 8080:80 -p 8443:443 rancher/rancher
+$ docker logs  rancher  2>&1 | grep "Bootstrap Password:"
+~~~
 
+- login http://vm01:8080
+- change password
+- Cluster : local > Copy KubeConfig to Clipboard
+
+~~~
 $ mkdir ~/.kube
-$ sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config 
+$ vi ~/.kube/config
+# Paste Clipboard & Save Quit
 ~~~
 
 **2. Check Cluster**
 
 ~~~
+# Install kubectl
+$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+$ chmod 755 kubectl && sudo mv kubectl /usr/local/bin
+
 $ kubectl get pods -A
 $ kubectl get nodes
 $ kubectl get cs
 $ kubectl cluster-info
 ~~~
 
-- Type cluster-token
-
-~~~
-$ sudo cat /var/lib/rancher/k3s/server/node-token
-~~~
-
-**3. Add worker node**
-
-- Login vm02
-
-**@vm02**
-
-~~~
-$ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.21.10+k3s1 K3S_URL=https://vm01:6443 K3S_TOKEN=%YOUR K3S CLUSTER TOKEN% sh -s - --docker
-~~~
-
-**4. Deploy workload**
-
-- Login vm01
-
-**@vm01**
+**3. Deploy workload**
 
 ~~~
 $ kubectl create deployment nginx --image nginx --port 80
