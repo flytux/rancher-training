@@ -1,4 +1,4 @@
-# Rancher Training Labs
+# Rancher Training - Multi-cluster-management from installations to CI/CD pipelines
 
 
 ### Lab 1. [Create k3s cluster](Lab1-create-k3s-cluster.md)
