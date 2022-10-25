@@ -96,7 +96,7 @@ $ cp config/kube_config_cluster.yml ~/.kube/config
 
 - 클러스터 상태를 확인합니다.
 - 클러스터 내 전체 네임스페이스의 파드를 조회합니다.
-- 클러스터 노드를 조회힙니다.
+- 클러스터 노드를 조회합니다.
 - 클러스터 마스터 노드 상태를 조회합니다.
 - 클러스터 정보를 조회합니다.
 
@@ -124,4 +124,23 @@ $ k exec -it $(kubectl get pods -l app=nginx -o name) -- bash
 $ curl -v nginx
 ~~~
 
+- bash 를 선호하는 경우 아래 명령어를 실행합니다.
+
+~~~
+$ cat <<EOF >> ~/.bashrc
+# k8s alias
+
+source <(kubectl completion bash)
+complete -o default -F __start_kubectl k
+
+alias k=kubectl
+alias vi=vim
+alias kn='kubectl config set-context --current --namespace'
+alias kc='kubectl config use-context'
+alias kcg='kubectl config get-contexts'
+alias di='docker images --format "table {{.Repository}}:{{.Tag}}\t{{.ID}}\t{{.Size}}\t{{.CreatedSince}}"'
+EOF
+
+$ source ~/.bashrc
+~~~
 
