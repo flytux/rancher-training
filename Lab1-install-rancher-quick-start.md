@@ -24,9 +24,7 @@ $ ssh-copy-id vm02
 
 ~~~
 $ git clone https://github.com/flytux/rancher-training
-
 $ cd rancher-training
-
 ~~~
 
 - zsh environment setting
