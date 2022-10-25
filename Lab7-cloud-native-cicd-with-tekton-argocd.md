@@ -4,7 +4,7 @@
 > 
 > Tekton은 가볍고 쿠버네티스와 완벽하게 호환되며, 어느 클러스터나 쉽게 구성이 가능합니다.
 > 쿠버네티스 CRD로 구성되어 쿠버네티스의 장점을 모두 이용할 수 있고,
-> Tekton Hub를 통해 다양한 Task를 이용할 수 있습니다. [Tekton Hub](https://hub.tekton.dev/)
+> Tekton Hub를 통해  검증된 Task를 이용할 수 있습니다. [Tekton Hub](https://hub.tekton.dev/)
 
 &nbsp;
 
