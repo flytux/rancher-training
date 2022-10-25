@@ -4,7 +4,7 @@
 
 **1) 멀티 클러스터 컨텍스트 설정**
 
-- 여러 개의 KUBECONFIG 파일을 환경변수에 설정하여 멀티 클러스터에 설정을 합니다.- 
+- 여러 개의 KUBECONFIG 파일을 환경변수에 설정하여 멀티 클러스터 접속 설정을 합 
 - Rancher UI 로그인 > Cluster "vm02" 선택
 - 우측 상단 "Copy Kubeconfig ..." 클릭하여 설정 복사
 - k8sadm@vm01 로그인
