@@ -191,7 +191,7 @@ $ tkn pr logs -f
 - Edit source and commit
 - Pipeline 구동 확인
 - ArgoCD에서 앱 배포 상태 확인
-- 어플리케이션 접속 후 배 : http://vm02:30088/ 
+- 어플리케이션 접속 후 변경된 이미지 배포 상태를 확인 합니다. : http://vm02:30088/ 
 
 &nbsp;
 
