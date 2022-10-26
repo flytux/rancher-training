@@ -1,6 +1,5 @@
-### Lab 5. User management with openLDAP
+### Lab 4. User management with openLDAP
 
-&nbsp;
 
 **1) install ldap**
 
@@ -15,8 +14,6 @@ $ k apply -f charts/local-path/local-path-storage.yaml
 
 $ helm install openldap -f charts/openldap/values.yaml charts/openldap -n openldap --create-namespace
 ~~~
-
-&nbsp;
 
 **2) ldapadmin 화면에서 사용자 생성**
 
@@ -35,7 +32,6 @@ $ helm install openldap -f charts/openldap/values.yaml charts/openldap -n openld
 
 - 생성한 사용자 계정과 비밀번호를 기억합니다.
 
-&nbsp;
 
 **3) Rancher 외부인증 설정** 
 
@@ -51,7 +47,6 @@ $ helm install openldap -f charts/openldap/values.yaml charts/openldap -n openld
 - LDAP에 생성한 사용자 명과 패스워드를 입력합니다.
 - "Enable"로 인증 설정 적용
 
-&nbsp;
 
 **4) LDAP 사용자 계정으로 Rancher 로그인**
 - Rancher에서 로그아웃합니다.
