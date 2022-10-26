@@ -16,6 +16,7 @@ $ ./setup.sh
 **@vm01**
 
 ~~~
+$ ssh-keygen
 $ ssh-copy-id vm01
 $ ssh-copy-id vm02
 ~~~
