@@ -81,3 +81,46 @@ data:
 - Copy 2nd Command from registration : bypass certificate verification
 - Paste and run at vm01
 
+
+**3) Add worker node vm02 to RKE cluster**
+
+- edit cluster.yml
+- add node vm02 config
+- rke up
+~~~
+$ vi cluster.yml
+
+nodes:
+- address: vm01
+  port: "22"
+  internal_address: 10.136.0.3
+  role:
+  - controlplane
+  - worker
+  - etcd
+  hostname_override: ""
+  user: k8sadm
+  docker_socket: /var/run/docker.sock
+  ssh_key: ""
+  ssh_key_path: ~/.ssh/id_rsa
+  ssh_cert: ""
+  ssh_cert_path: ""
+  labels: {}
+  taints: []
+- address: vm02
+  port: "22"
+  internal_address: 10.136.0.2
+  role:
+  - worker
+  hostname_override: ""
+  user: k8sadm
+  docker_socket: /var/run/docker.sock
+  ssh_key: ""
+  ssh_key_path: ~/.ssh/id_rsa
+  ssh_cert: ""
+  ssh_cert_path: ""
+  labels: {}
+  taints: []
+  
+$ rke up
+~~~
