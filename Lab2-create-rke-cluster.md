@@ -40,14 +40,37 @@ $ rke config
 [+] Cluster DNS Service IP [10.43.0.10]: 
 [+] Add addon manifest URLs or YAML files [no]:
 ~~~
+
 - rke up
 - copy config
+- add dns entry to coredns "YOUR_INTERNAL_IP vm01"
+
 ~~~
 $ rke up
-$ mkdir -p ~/.kube
-$ cp kube_config_cluster.yml ~/.kube/config-rke
-$ export KUBECONFIG=$HOME/.kube/config-rke:$HOME/.kube/config
+
+$ cp kube_config_cluster.yml ~/.kube/config-rke-vm01
+$ sed -i 's/local/rke-vm01/g'  ~/.kube/config-rke-vm01
+$ export KUBECONFIG=$HOME/.kube/config-rke-vm01:$HOME/.kube/config
+
+$ kcg
+$ kc rke-vm01
+
 $ k get pods -A
+
+$ k edit cm coredns -n kube-system
+
+data:
+  Corefile: |
+    .:53 {
+        errors
+        health {
+          lameduck 5s
+        }
+        hosts {
+          10.136.0.3 vm01 # REPLACE WITH YOUR INTERNAL IP
+          fallthrough
+        }
+- save & quit        
 ~~~
 
 **2) Import RKE cluster to Rancher**
