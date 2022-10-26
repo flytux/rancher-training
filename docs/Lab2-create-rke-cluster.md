@@ -2,20 +2,23 @@
 
 - run rke config
 
-~~~
+```bash
 $ rke config
 
 [+] Cluster Level SSH Private Key Path [~/.ssh/id_rsa]: 
 [+] Number of Hosts [1]: 
-~~~
+```
+
 **[+] SSH Address of host (1) [none]: vm01**
-~~~
+
+```bash
 [+] SSH Port of host (1) [22]:
 [+] SSH Private Key Path of host () [none]: 
 [-] You have entered empty SSH key path, trying fetch from SSH key parameter
 [+] SSH Private Key of host () [none]: 
 [-] You have entered empty SSH key, defaulting to cluster level SSH key: ~/.ssh/id_rsa
-~~~
+```
+
 **[+] SSH User of host () [ubuntu]: k8sadm**
 
 **[+] Is host () a Control Plane host (y/n)? [y]: y**
@@ -23,11 +26,14 @@ $ rke config
 **[+] Is host () a Worker host (y/n)? [n]: y**
 
 **[+] Is host () an etcd host (y/n)? [n]: y**
-~~~
+
+```bash
 [+] Override Hostname of host () [none]: 
-~~~
+```
+
 **[+] Internal IP of host () [none]: %YOUR_INTERNAL_IP%**
-~~~
+
+```bash
 [+] Docker socket path on host () [/var/run/docker.sock]: 
 [+] Network Plugin Type (flannel, calico, weave, canal, aci) [canal]: 
 [+] Authentication Strategy [x509]: 
@@ -39,7 +45,7 @@ $ rke config
 [+] Cluster Network CIDR [10.42.0.0/16]: 
 [+] Cluster DNS Service IP [10.43.0.10]: 
 [+] Add addon manifest URLs or YAML files [no]:
-~~~
+```
 
 - rke up
 - copy config
@@ -87,7 +93,8 @@ data:
 - edit cluster.yml
 - add node vm02 config
 - rke up
-~~~
+
+```bash
 $ vi cluster.yml
 
 nodes:
@@ -123,4 +130,4 @@ nodes:
   taints: []
   
 $ rke up
-~~~
+```
