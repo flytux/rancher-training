@@ -1,4 +1,5 @@
-# Rancher Training - Multi-cluster-management from installations to CI/CD pipelines
+# Rancher Training 
+## *Multi-cluster-management from installations to CI/CD pipelines*
 
 ### Lab 1. [Install Rancher Quick-Start](./docs/Lab1-install-rancher-quick-start.md)
 ### Lab 2. [Create RKE cluster](./docs/Lab2-create-rke-cluster.md)
