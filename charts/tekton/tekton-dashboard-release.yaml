@@ -5,7 +5,7 @@ metadata:
   namespace: tekton-pipelines
 spec:
   rules:
-  - host: tekton.vm02
+  - host: tekton.vm01
     http:
       paths:
       - backend:
