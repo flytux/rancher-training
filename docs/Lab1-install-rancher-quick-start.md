@@ -21,11 +21,11 @@ $ ssh-copy-id vm01
 $ ssh-copy-id vm02
 ~~~
 
-- Clone workshop repo 
+- Get Lab Docs & Sources
 
 ~~~
-$ git clone https://github.com/flytux/rancher-training
-$ cd rancher-training
+$ wget https://github.com/flytux/rancher-training/archive/refs/tags/rev2.zip
+$ cd rancher-training-rev2
 ~~~
 
 - zsh environment setting
