@@ -38,9 +38,9 @@ $ sudo ls -al /opt/rke/etcd-snapshots/
 
 **@vm01**
 
-~~~
+```bash
 $ rke etcd snapshot-restore --name rke_etcd_snapshot_2022-10-26T01:23:02Z # except .zip file extension
-~~~
+```
 
 **@rancher**
 - Check Workload > apache
