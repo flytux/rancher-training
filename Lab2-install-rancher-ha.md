@@ -1,4 +1,4 @@
-### Lab 2. Install Rancher in cluster HA
+### A2. Install Rancher in cluster HA
 
 > Rancher HA installation inside management cluster (Default number of replicas : 3)
 > 
