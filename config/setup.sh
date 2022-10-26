@@ -9,6 +9,7 @@ EOF
 echo "=== Install Docker ==="
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
+sudo apt install git -y
 
 echo "=== Create k8sadm user ==="
 groupadd -g 2000 k8sadm
