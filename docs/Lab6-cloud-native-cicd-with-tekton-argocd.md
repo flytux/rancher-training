@@ -46,7 +46,7 @@ $ curl -v vm01:30005/v2/_catalog
 
 **@vm01**
 
-~~~
+```bash
 $ sudo vi /etc/docker/daemon.json
 # replace below and save
 { 
@@ -57,7 +57,8 @@ $ sudo systemctl restart docker
 
 $ sudo docker login vm01:30005
 # ID / Password > tekton / 1 
-~~~
+```
+
 - Add Project "DEVOPS" in Rancher
 
 &nbsp;
@@ -161,8 +162,8 @@ $ kcg
 $ kc rke
 $ kn build
 $ k create -f charts/tekton/pipeline/pr-kw-build.yml
-$ tkn pr logs -f 
 ~~~
+
 - http://tekton.vm01/#/namespaces/build/pipelineruns
 
 &nbsp;
