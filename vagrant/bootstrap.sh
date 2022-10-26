@@ -60,6 +60,8 @@ alias kcg='kubectl config get-contexts'
 alias di='docker images --format "table {{.Repository}}:{{.Tag}}\t{{.ID}}\t{{.Size}}\t{{.CreatedSince}}"'
 EOF
 
+source ~/.bashrc
+
 #sudo -u k8sadm -H sh -c "ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N \"\";sshpass -p 1 ssh-copy-id k8sadm@vm01;sshpass -p 1 ssh-copy-id k8sadm@vm02"
 
 
