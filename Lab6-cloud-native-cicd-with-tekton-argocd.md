@@ -15,7 +15,7 @@
 **@vm01**
 
 ~~~
-$ kc rke
+$ kc rke-vm01
 $ kcg
 
 # install storage-class, set default
@@ -26,7 +26,7 @@ $ kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storag
 $ k apply -f charts/gitea/deploy-gitea.yml
 ~~~
 
-- http://gitea.vm02
+- http://gitea.vm01
 - Set Gitea Base URL : http://gitea.gitea:3000
 - Install Gitea
 - Register User ID : tekton, Password: 12345678
@@ -46,7 +46,7 @@ $ # Add below
     }
     
      hosts {
-        192.0.212.2 vm02 # Update YOUR vm02 IP
+        192.0.212.2 vm01 # Update YOUR vm02 IP
         fallthrough
      }
 $ :wq
@@ -57,18 +57,18 @@ $ curl -v vm02:30005/v2/_catalog
 
 ~~~
 
-**@vm02**
+**@vm01**
 
 ~~~
 $ sudo vi /etc/docker/daemon.json
 # replace below and save
 { 
-  "insecure-registries": ["vm02:30005"]
+  "insecure-registries": ["vm01:30005"]
 }
 
 $ sudo systemctl restart docker
 
-$ sudo docker login vm02:30005
+$ sudo docker login vm01:30005
 # ID / Password > tekton / 1 
 ~~~
 - Add Project "DEVOPS" in Rancher
@@ -85,7 +85,7 @@ $ k apply -f charts/tekton/tekton-dashboard-release.yaml
 $ kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previous/v0.17.1/release.yaml
 $ kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previous/v0.17.1/interceptors.yaml
 ~~~
-- http://tekton.vm02
+- http://tekton.vm01
 
 - http://rancher.vm01
 
@@ -122,7 +122,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 - Cluster rke > System > Resources > Workloads > nginx-ingress-controller > ... > Edit
 - Show Advanced options > Command > Command > Add "--enable-ssl-passthrough" to the end of arguments > Save
 
-- Login argoCD : https://argocd.vm02
+- Login argoCD : https://argocd.vm01
 - ID : admin
 - Password : # Get admin password
 
@@ -173,14 +173,14 @@ $ kn build
 $ k create -f charts/tekton/pipeline/pr-kw-build.yml
 $ tkn pr logs -f 
 ~~~
-- http://tekton.vm02/#/namespaces/build/pipelineruns
+- http://tekton.vm01/#/namespaces/build/pipelineruns
 
 &nbsp;
 
-- Check application : http://vm02:30088/ 
+- Check application : http://vm01:30088/ 
   
 **7) Add Webhook to Gitea Repo**
-- http://gitea.vm02/tekton/kw-mvn
+- http://gitea.vm01/tekton/kw-mvn
 - Settings > Webhooks > Add Webhook > Gitea
 - Target URL : http://el-build-listener.build:8080
 - Add Webhook
@@ -193,7 +193,7 @@ $ tkn pr logs -f
 - Edit source and commit
 - Check Pipeline Runs
 - Check argocd app deployment status
-- Check application : http://vm02:30088/ 
+- Check application : http://vm01:30088/ 
 
 &nbsp;
 
