@@ -38,22 +38,9 @@ $ k apply -f charts/gitea/deploy-gitea.yml
 **@vm01**
 
 ~~~
-$ # Add in cluster dns name to coredns
-$ k edit cm coredns -n kube-system
-$ # Add below
-    health {
-          lameduck 5s
-    }
-    
-     hosts {
-        192.0.212.2 vm01 # Update YOUR vm02 IP
-        fallthrough
-     }
-$ :wq
-~~~
-~~~
-$ helm install docker-registry -f charts/docker-registry/values.yaml charts/docker-registry -n registry --create-namespace
-$ curl -v vm02:30005/v2/_catalog
+$ helm install docker-registry -f charts/docker-registry/values.yaml \
+  charts/docker-registry -n registry --create-namespace
+$ curl -v vm01:30005/v2/_catalog
 
 ~~~
 
@@ -99,9 +86,8 @@ $ kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previ
 $ k create ns build
 $ kn build
 $ k apply -f charts/tekton/pipeline
-$ tkn t ls
-$ tkn p ls
 ~~~
+
 - Add Project "APPS" in Rancher
 - Move build namespace to "APPS" project
 
@@ -111,7 +97,8 @@ $ tkn p ls
 ~~~
 $ kubectl create namespace argocd
 $ kubectl apply -n argocd -f charts/argocd/
-$ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d # Get admin password
+$ kubectl -n argocd get secret argocd-initial-admin-secret \
+  -o jsonpath="{.data.password}" | base64 -d # Get admin password
 ~~~
 
 &nbsp;
@@ -154,7 +141,7 @@ Option2)
   Key: accounts.admin Value: apiKey, login
 - Save
 
-- Login argocd : https://argocd.vm02
+- Login argocd : https://argocd.vm01
 - Manage > Account > admin > Tokens > Generate New
 - Copy New Token:
 
