@@ -45,7 +45,7 @@ $ rke config
 - copy config
 - add dns entry to coredns "YOUR_INTERNAL_IP vm01"
 
-~~~
+```bash
 $ rke up
 
 $ cp kube_config_cluster.yml ~/.kube/config-rke-vm01
@@ -71,7 +71,7 @@ data:
           fallthrough
         }
 - save & quit        
-~~~
+```
 
 **2) Import RKE cluster to Rancher**
 
