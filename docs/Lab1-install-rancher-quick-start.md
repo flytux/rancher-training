@@ -24,7 +24,8 @@ $ ssh-copy-id vm02
 - Get Lab Docs & Sources
 
 ~~~
-$ wget https://github.com/flytux/rancher-training/archive/refs/tags/rev2.zip
+$ wget https://github.com/flytux/rancher-training/\
+  archive/refs/tags/rev2.zip
 $ cd rancher-training-rev2
 ~~~
 
@@ -43,7 +44,7 @@ $ source ~/.bashrc
 **1. Install rancher quick-start**
 
 ~~~
-$ docker run -d --name rancher --privileged -p 8080:80 -p 8443:443 rancher/rancher
+$ docker run -d --name rancher --privileged -p 8080:80 -p 8443:443 \ rancher/rancher
 $ docker logs  rancher  2>&1 | grep "Bootstrap Password:"
 ~~~
 
@@ -60,10 +61,6 @@ $ vi ~/.kube/config
 **2. Check Cluster**
 
 ~~~
-# Install kubectl
-$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-$ chmod 755 kubectl && sudo mv kubectl /usr/local/bin
-
 $ kubectl get pods -A
 $ kubectl get nodes
 $ kubectl get cs
