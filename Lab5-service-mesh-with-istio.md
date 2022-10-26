@@ -3,13 +3,13 @@
 &nbsp;
 
 **1) 랜처에서 Istio 서비스를 설치합니다.**
-- Cluster > vm02 > Apps > Istio > Install
+- Cluster > rke-vm01 > Apps > Istio > Install
 - Into the project "System" > Next > Install
 
 &nbsp;
 
 **2) Istio 설정된 워크로드를 배포합니다.**
-- Cluster > vm02 > Project/Namespace > Create Project "Observability" 
+- Cluster > rke-vm01 > Project/Namespace > Create Project "Observability" 
 - Project "Observability" > Create Namespace "istio-books"
 - Namespace "istio-books" > ... > Enable Istio Auto Injection
 - 우측상단 메뉴 > Import YAML > Copy [istio-books](./config/istio-books.yml)
