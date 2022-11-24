@@ -68,13 +68,10 @@ $ sudo docker login vm01:30005
 **@vm01**
 
 ~~~
-$ kubectl apply -f https://storage.googleapis.com/\
-  tekton-releases/pipeline/previous/v0.29.1/release.yaml
-$ k apply -f charts/tekton/tekton-dashboard-release.yaml
-$ kubectl apply -f https://storage.googleapis.com/\
-  tekton-releases/triggers/previous/v0.17.1/release.yaml
-$ kubectl apply -f https://storage.googleapis.com/\
-  tekton-releases/triggers/previous/v0.17.1/interceptors.yaml
+$ kubectl apply -f https://storage.googleapis.com/\tekton-releases/pipeline/previous/v0.29.1/release.yaml
+$ kubectl apply --filename https://storage.googleapis.com/tekton-releases/dashboard/latest/tekton-dashboard-release.yaml
+$ kubectl apply -f https://storage.googleapis.com/\tekton-releases/triggers/previous/v0.17.1/release.yaml
+$ kubectl apply -f https://storage.googleapis.com/\tekton-releases/triggers/previous/v0.17.1/interceptors.yaml
 ~~~
 - http://tekton.vm01
 
