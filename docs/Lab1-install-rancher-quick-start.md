@@ -24,8 +24,7 @@ $ ssh-copy-id vm02
 - Get Lab Docs & Sources
 
 ```bash
-$ wget https://github.com/flytux/rancher-training/\
-  archive/refs/tags/rev2.zip
+$ wget https://github.com/flytux/rancher-training/archive/refs/tags/rev2.zip
 $ cd rancher-training-rev2
 ```
 
