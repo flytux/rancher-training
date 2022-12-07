@@ -43,7 +43,7 @@ $ source ~/.bashrc
 **1. Install rancher quick-start**
 
 ```bash
-$ docker run -d --name rancher --privileged -p 8080:80 -p 8443:443 \ rancher/rancher
+$ docker run -d --name rancher --privileged -p 8080:80 -p 8443:443 rancher/rancher
 $ docker logs  rancher  2>&1 | grep "Bootstrap Password:"
 ```
 
