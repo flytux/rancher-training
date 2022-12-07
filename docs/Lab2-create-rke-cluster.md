@@ -31,9 +31,10 @@ $ rke config
 [+] Override Hostname of host () [none]: 
 ```
 
-**[+] Internal IP of host () [none]: %YOUR_INTERNAL_IP%**
+
 
 ```bash
+[+] Internal IP of host () [none]: 
 [+] Docker socket path on host () [/var/run/docker.sock]: 
 [+] Network Plugin Type (flannel, calico, weave, canal, aci) [canal]: 
 [+] Authentication Strategy [x509]: 
