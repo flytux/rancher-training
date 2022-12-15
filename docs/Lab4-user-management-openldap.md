@@ -43,7 +43,7 @@ $ helm install openldap -f charts/openldap/values.yaml charts/openldap -n openld
 
 - 메뉴 > Users & Authentication > Auth Provider > OpenLDAP 선택
 
-- Hostname or IP address > VM01 내부 IP (ex. 192.0.212.01)
+- Hostname or IP address > VM01 내부 IP (ex. 192.0.212.1)
 - Port : 30389
 
 - Service Account Distinguished Name : cn=admin,dc=sso,dc=kubeworks,dc=net, Service Account Password : admin
