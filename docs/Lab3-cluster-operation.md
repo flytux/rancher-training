@@ -9,7 +9,7 @@
 - Index URL : https://charts.bitnami.com/bitnami > Create
 
 - Apps > Charts > Filter "apache"
-- Select Apache > Install > Next > Name "Apache" > Next > Install
+- Select apache > Install > Next > Name "apache" > Next > Install
 
 - Edit YAML : Service Type to NodePort
 ~~~
