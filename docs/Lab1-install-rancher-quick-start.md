@@ -1,6 +1,6 @@
 ### Lab 1. Install Rancher Quick-Start
 
-**0. 사전작업 **
+**0. 사전작업**
 
 - vm01과 vm02에 root로 로그인합니다.
 - setup.sh 파일을 편집하여 vm01, vm02 IP를 할당된 IP값으로 수정합니다.
@@ -66,7 +66,7 @@ $ kubectl get cs
 $ kubectl cluster-info
 ```
 
-**3. 워크로드 **
+**3. 워크로드**
 
 ```bash
 $ kubectl create deployment nginx --image nginx --port 80
