@@ -14,7 +14,7 @@ spec:
   - name: git-url
     value: http://gitea.gitea:3000/tekton/kw-mvn.git
   - name: image-url
-    value: "vm02:30005/kw-mvn"
+    value: "vm01:30005/kw-mvn"
   workspaces:
   - name: source
     persistentvolumeclaim:
