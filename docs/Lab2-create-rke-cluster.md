@@ -1,6 +1,6 @@
-**1) Install RKE cluster**
+**1) RKE cluster 설치**
 
-- run rke config
+- rke 바이너리를 이용하여 클러스터를 설정합니다.
 
 ```bash
 $ rke config
@@ -31,8 +31,6 @@ $ rke config
 [+] Override Hostname of host () [none]: 
 ```
 
-
-
 ```bash
 [+] Internal IP of host () [none]: 
 [+] Docker socket path on host () [/var/run/docker.sock]: 
@@ -48,9 +46,9 @@ $ rke config
 [+] Add addon manifest URLs or YAML files [no]:
 ```
 
-- rke up
-- copy config
-- add dns entry to coredns "YOUR_INTERNAL_IP vm01"
+- rke 명령어를 이용하여 클러스터를 설치합니다.
+- 설치 후 생성된 config 파일을 홈디렉토리/.kube 디렉토리에 복사합니다.
+- 클러스터 내 CoreDNS에 "할당받은IP vm01" 값을 설정합니다.
 
 ```bash
 $ rke up
@@ -74,7 +72,7 @@ data:
           lameduck 5s
         }
         hosts {
-          10.136.0.3 vm01 # REPLACE WITH YOUR INTERNAL IP
+          192.0.212.1 vm01 # 할당 받은 내부 IP로 변경합니다.
           fallthrough
         }
 - save & quit        
@@ -82,18 +80,17 @@ data:
 
 **2) Import RKE cluster to Rancher**
 
-- login rancher
-- Menu > Cluster Management > Import Existing
-- Generic > Cluster Name : rke-vm01 > Create
-- Copy 2nd Command from registration : bypass certificate verification
-- Paste and run at vm01
+- rancher에 로그인 합니다.
+- Menu > Cluster Management > Import Existing을 선택합니다.
+- Generic > Cluster Name : rke-vm01 > Create를 선택합니다.
+- registration 창에서 2번째 명령어 (bypass certificate verification)를 복사합니다.
+- vm01의 쉘에서 실행합니다.
 
 
 **3) Add worker node vm02 to RKE cluster**
 
-- edit cluster.yml
-- add node vm02 config
-- rke up
+- cluster.yml를 수정하여 node vm02를 추가합니다.
+- rke 명령어로 클러스터를 재기동 합니다.
 
 ```bash
 $ vi cluster.yml
