@@ -54,7 +54,7 @@ spec:
           name: build-mvn-jib
         params:
           - name: image-url
-            value: vm02:30005/$(tt.params.image-name)
+            value: vm01:30005/$(tt.params.image-name)
           - name: revision
             value: $(tt.params.gitrevision)
           - name: git-url
