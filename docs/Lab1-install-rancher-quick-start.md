@@ -1,6 +1,6 @@
 ### Lab 1. Install Rancher Quick-Start
 
-**0. 사전 **
+**0. 사전작업 **
 
 - vm01과 vm02에 root로 로그인합니다.
 - setup.sh 파일을 편집하여 vm01, vm02 IP를 할당된 IP값으로 수정합니다.
