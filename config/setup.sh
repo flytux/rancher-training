@@ -1,16 +1,5 @@
 #!/bin/sh
 
-echo "=== Update /etc/hosts file ==="
-cat >>/etc/hosts<<EOF
-10.136.0.3 vm01 rancher.vm01 ldapadmin.vm01 tekton.vm01 argocd.vm01
-10.136.0.2 vm02 
-EOF
-
-echo "=== Install Docker ==="
-curl -fsSL https://get.docker.com -o get-docker.sh
-sh get-docker.sh
-sudo apt install git -y
-
 echo "=== Create k8sadm user ==="
 groupadd -g 2000 k8sadm
 useradd -m -u 2000 -g 2000 -s /bin/bash k8sadm
