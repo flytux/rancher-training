@@ -4,7 +4,7 @@ kind: Secret
 metadata:
     name: docker-auth
     annotations:
-      tekton.dev/docker-0: vm02:30005
+      tekton.dev/docker-0: kw01:30005
 type: kubernetes.io/basic-auth
 stringData:
     username: tekton

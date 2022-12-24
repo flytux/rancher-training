@@ -1,0 +1,18 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  generateName: jib-gradle-
+spec:
+  serviceAccountName: sa-pipeline-runner
+  taskRef:
+    name: jib-gradle
+  params:
+  - name: IMAGE
+    value: kw01:30005/gradle-sample:dev
+  - name: DIRECTORY
+    #value: ./jib/examples/helloworld
+    value: ./jib/examples/multi-module
+  workspaces:
+  - name: source
+    persistentVolumeClaim:
+      claimName: pvc-jib
