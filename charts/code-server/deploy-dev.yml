@@ -23,7 +23,7 @@ metadata:
   name: dev-pvc
   namespace: dev
 spec:
-  storageClassName: nfs-client
+  storageClassName: local-path
   accessModes:
   - ReadWriteOnce
   resources:

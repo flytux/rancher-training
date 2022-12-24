@@ -25,6 +25,9 @@ spec:
   - name: DIRECTORY
     description: The directory containing the app, relative to the source repository root
     default: .
+  - name: SUBMODULE
+    description: Name of Submodule to jib
+    default: ""
   - name: CACHE
     description: The name of the volume for caching Gradle artifacts, local Maven repository, and base image layers
     default: empty-dir-volume
@@ -57,27 +60,16 @@ spec:
       echo "initscript {
               repositories { maven { url 'https://plugins.gradle.org/m2' } }
               dependencies { classpath 'gradle.plugin.com.google.cloud.tools:jib-gradle-plugin:+' }
-            }
-            rootProject {
-              afterEvaluate {
-              //  if (!project.plugins.hasPlugin('com.google.cloud.tools.jib')) {
-              //   project.apply plugin: com.google.cloud.tools.jib.gradle.JibPlugin
-              //  }
-              }
             }" > "$HOME"/init-script.gradle
 
       # Runs the Gradle Jib build.
       echo $(params.IMAGE)
-      gradle jib \
-        --stacktrace --console=verbose \
-        --init-script="$HOME"/init-script.gradle 
-        --gradle-user-home="$HOME"/.gradle \
-        -Dgradle.user.home="$HOME"/.gradle \
-        -Duser.home="$HOME" \
-        -Djib.allowInsecureRegistries="$(params.INSECUREREGISTRY)" \
-        -Djib.to.image="$(params.IMAGE)" \
-        -Djib.outputPaths.digest="$(results.IMAGE_DIGEST.path)" \
-        $(params.EXTRA_ARGS)
+      #./gradlew :hello-service:jib
+      gradle $(params.SUBMODULE)jib --init-script=$HOME/init-script.gradle \
+      --gradle-user-home=$HOME/.gradle -Dgradle.user.home=$HOME/.gradle \
+      -Duser.home=$HOME -Djib.allowInsecureRegistries=$(params.INSECUREREGISTRY) \
+      -Djib.to.image=$(params.IMAGE) -Djib.outputPaths.digest=$(results.IMAGE_DIGEST.path) \
+      $(params.EXTRA_ARGS)
       echo $(params.IMAGE) | tee $(results.IMAGE_URL.path)
     env:
     - name: HOME

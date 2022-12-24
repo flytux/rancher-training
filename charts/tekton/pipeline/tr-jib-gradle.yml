@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
-  generateName: jib-gradle-
+  generateName: name-service-jib-gradle-
 spec:
   serviceAccountName: sa-pipeline-runner
   taskRef:
@@ -12,6 +12,8 @@ spec:
   - name: DIRECTORY
     #value: ./jib/examples/helloworld
     value: ./jib/examples/multi-module
+  - name: SUBMODULE
+    value: ":name-service:"
   workspaces:
   - name: source
     persistentVolumeClaim:
